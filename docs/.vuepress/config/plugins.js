@@ -1,10 +1,10 @@
 // 插件配置
 module.exports = [
   // 本地插件
-  // [require('./plugins/love-me'), { // 鼠标点击爱心特效
-  //   color: '#11a8cd', // 爱心颜色，默认随机色
-  //   excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
-  // }],
+  [require('../plugins/love-me'), { // 鼠标点击爱心特效
+    color: '#11a8cd', // 爱心颜色，默认随机色
+    excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
+  }],
 
   'vuepress-plugin-baidu-autopush', // 百度自动推送
 
@@ -33,7 +33,7 @@ module.exports = [
         },
         {
           title: '通过百度搜索本站的',
-          frontUrl: 'https://www.baidu.com/s?wd=site%3Axugaoyi.com%20',
+          frontUrl: 'https://www.baidu.com/s?wd=',
         },
       ],
     },
@@ -86,8 +86,8 @@ module.exports = [
         clientID: 'a6e1355287947096b88b',
         clientSecret: 'f0e77d070fabfcd5af95bebb82b2d574d7248d71',
         repo: 'blog-gitalk-comment', // GitHub 仓库
-        owner: 'xugaoyi', // GitHub仓库所有者
-        admin: ['xugaoyi'], // 对仓库有写权限的人
+        owner: 'kele-bingtang', // GitHub仓库所有者
+        admin: ['kele-bingtang'], // 对仓库有写权限的人
         // distractionFreeMode: true,
         pagerDirection: 'last', // 'first'正序 | 'last'倒序
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
@@ -108,3 +108,5 @@ module.exports = [
     },
   ],
 ]
+
+
