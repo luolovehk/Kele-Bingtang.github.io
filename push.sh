@@ -3,7 +3,7 @@ GITHUB_REPO=git@github.com:Kele-Bingtang/blog.git
 comment=$1
 
 if [ ! $comment ]; then
-comment="新的内容来了"
+comment="更新内容+action自动部署"
 fi
 
 git add -A
