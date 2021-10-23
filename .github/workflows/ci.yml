@@ -17,7 +17,7 @@ jobs: # 工作流
         node-version: [14.x]
 
     steps: # 步骤
-      - name: Checkout # 步骤1
+      - name: Checkout # 步骤1，拉取代码
       # 使用的动作。格式：userName/repoName。作用：检出仓库，获取源码。 官方actions库：https://github.com/actions
         uses: actions/checkout@v1 
       
@@ -26,13 +26,22 @@ jobs: # 工作流
         with:
           node-version: ${{ matrix.node-version }} # 版本
 
-      - name: Push To Gitee  # 步骤3：GitHub 内容同步到 Gitee
+      - name: Push To Gitee  # 步骤3：GitHub 内容同步到 Gitee，同步仓库是master
         uses: wearerequired/git-mirror-action@master
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
           source-repo: 'git@github.com:Kele-Bingtang/blog.git'    #github 仓库地址
           destination-repo: 'git@gitee.com:kele-bingtang/blog.git'    #gitee 仓库地址
+
+      - name: Push To Gitee  # GitHub 内容同步到 Gitee，同步仓库是gh-pages
+        uses: wearerequired/git-mirror-action@gh-pages
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
+        with:
+          source-repo: 'git@github.com:Kele-Bingtang/blog.git'    #github 仓库地址
+          destination-repo: 'git@gitee.com:kele-bingtang/blog.git'    #gitee 仓库地址
+
 # 遭遇的问题：
         #  source-repo，destination-repo必须小写，我是大写了
       - name: run deploy.sh # 步骤4：执行脚本deploy.sh，仅仅只是名字

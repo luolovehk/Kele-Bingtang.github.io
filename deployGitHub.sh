@@ -12,7 +12,7 @@ cd docs/.vuepress/dist
 # 如果发布到自定义域名，请使用
 # echo 'b.xugaoyi.com' > CNAME
 
-# 如果GitHub存在文件，则直接部署，否则先进行初始化，然后部署
+# 如果手运行该脚本，则执行if里的，如果是GitHub自动执行该脚本，则是else里的
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:Kele-Bingtang/blog.git
@@ -40,5 +40,5 @@ git push -f $githubUrl master:gh-pages # 推送到github gh-pages分支
 # git commit -m "${msg}"
 # git push -f $codingUrl master # 推送到coding
 
-cd -
+cd -  # 退回开始所在目录
 rm -rf docs/.vuepress/dist

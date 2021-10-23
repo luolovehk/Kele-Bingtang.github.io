@@ -18,6 +18,7 @@ if [ -z "$SSH_PRIVATE_KEY" ]; then
   giteeUrl=git@gitee.com:kele-bingtang/blog.git
   # echo '如果是空字符串，则不部署到gitee'
 else
+  msg='来自gitee actions的自动部署'
   giteeUrl=git@gitee.com:kele-bingtang/blog.git  #gitee 仓库ssh地址
   git config --global user.name "Kele-Bingtang"
   git config --global user.email "2456019588@qq.com"

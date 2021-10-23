@@ -18,19 +18,19 @@ cd docs/.vuepress/dist
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:Kele-Bingtang/blog.git
+  giteeUrl=git@gitee.com:kele-bingtang/blog.git
 else
   msg='来自github actions的自动部署'
   githubUrl=https://Kele-Bingtang:${GITHUB_TOKEN}@github.com/Kele-Bingtang/blog.git
+  giteeUrl=git@gitee.com:kele-bingtang/blog.git
   git config --global user.name "Kele_Bingtang"
   git config --global user.email "2456019588@qq.com"
 fi
 git init
-git remote add github git@github.com:Kele-Bingtang/blog.git
-git remote add gitee git@gitee.com:kele-bingtang/blog.git
 git add -A
 git commit -m "${msg}"
-git push -f github master:gh-pages
-git push -f gitee master:gh-pages
+git push -f $githubUrl master:gh-pages
+git push -f $giteeUrl master:gh-pages
 
 cd - # 退回开始所在目录
 rm -rf docs/.vuepress/dist
