@@ -1,12 +1,5 @@
 #!/usr/bin/env sh
 
-# git commit的描述
-comment=$1
-
-if [ ! $comment ]; then
-  comment='来自github actions的自动部署，并同步到gitee'
-fi
-
 # 确保脚本抛出遇到的错误
 set -e
 
@@ -30,9 +23,12 @@ else
   git config --global user.email "2456019588@qq.com"
 fi
 git init
+git remote add github git@github.com:Kele-Bingtang/blog.git
+git remote add gitee git@gitee.com:kele-bingtang/blog.git
 git add -A
 git commit -m "${msg}"
-git push -f $githubUrl master:gh-pages # 推送到github gh-pages分支
+git push -f github master:gh-pages
+git push -f gitee master:gh-pages
 
 cd - # 退回开始所在目录
 rm -rf docs/.vuepress/dist
