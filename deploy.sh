@@ -27,6 +27,7 @@ git init
 git add -A
 git commit -m "${msg}"
 git push -f $githubUrl master:gh-pages # 推送到github gh-pages分支
+git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee，
 git push -f $giteeUrl master:gh-pages
 
 # deploy to coding pages
@@ -41,12 +42,6 @@ git push -f $giteeUrl master:gh-pages
 # git add -A
 # git commit -m "${msg}"
 # git push -f $codingUrl master # 推送到coding
-
-git init
-git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee，
-git add -A
-git commit -m "deploy"
-
 
 cd - # 退回开始所在目录
 rm -rf docs/.vuepress/dist
