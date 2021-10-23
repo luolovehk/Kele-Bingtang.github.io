@@ -12,14 +12,15 @@ cd docs/.vuepress/dist
 # 如果发布到自定义域名，请使用
 # echo 'b.xugaoyi.com' > CNAME
 
-giteeUrl=git@gitee.com:kele-bingtang/blog.git
 # 如果手运行该脚本，则执行if里的，如果是GitHub自动执行该脚本，则是else里的
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
   githubUrl=git@github.com:Kele-Bingtang/blog.git
+  giteeUrl=git@gitee.com:kele-bingtang/blog.git
 else
   msg='来自github actions的自动部署'
   githubUrl=https://Kele-Bingtang:${GITHUB_TOKEN}@github.com/Kele-Bingtang/blog.git
+  giteeUrl=https://Kele-Bingtang:${GITHUB_TOKEN}@gitee.com/Kele-Bingtang/blog.git
   git config --global user.name "Kele_Bingtang"
   git config --global user.email "2456019588@qq.com"
 fi
@@ -27,7 +28,6 @@ git init
 git add -A
 git commit -m "${msg}"
 git push -f $githubUrl master:gh-pages # 推送到github gh-pages分支
-git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee，
 git push -f $giteeUrl master:gh-pages
 
 # deploy to coding pages
