@@ -23,6 +23,7 @@ else
   giteeUrl=https://Kele-Bingtang:${GITEE_TOKEN}@gitee.com/Kele-Bingtang/blog.git
   git config --global user.name "Kele_Bingtang"
   git config --global user.email "2456019588@qq.com"
+  echo $GITEE_TOKEN
 fi
 git init
 git add -A
