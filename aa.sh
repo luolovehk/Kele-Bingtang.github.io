@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# 本脚本里，请将githubUrl变量改为自己的GitHub地址，以及28和29行代码的地址
+
 # 确保脚本抛出遇到的错误
 set -e
 
@@ -12,7 +14,6 @@ cd docs/.vuepress/dist
 # 如果发布到自定义域名，请使用
 # echo 'b.xugaoyi.com' > CNAME
 
-giteeUrl=git@gitee.com:kele-bingtang/blog.git
 # 如果手运行该脚本，则执行if里的，如果是GitHub自动执行该脚本，则是else里的
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
@@ -24,10 +25,15 @@ else
   git config --global user.email "2456019588@qq.com"
 fi
 git init
+git remote add github git@github.com:Kele-Bingtang/blog.git
+git remote add gitee git@gitee.com:kele-bingtang/blog.git
 git add -A
 git commit -m "${msg}"
-git push -f $githubUrl master:gh-pages # 推送到github gh-pages分支
-git push -f $giteeUrl master:gh-pages
+git push -f github master:gh-pages
+git push -f gitee master:gh-pages
+
+cd - # 退回开始所在目录
+rm -rf docs/.vuepress/dist
 
 # deploy to coding pages
 # echo 'www.xugaoyi.com\nxugaoyi.com' > CNAME  # 自定义域名
@@ -42,11 +48,4 @@ git push -f $giteeUrl master:gh-pages
 # git commit -m "${msg}"
 # git push -f $codingUrl master # 推送到coding
 
-git init
-git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee，
-git add -A
-git commit -m "deploy"
 
-
-cd - # 退回开始所在目录
-rm -rf docs/.vuepress/dist
