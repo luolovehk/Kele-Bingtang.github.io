@@ -23,7 +23,7 @@ else
   git config --global user.email "2456019588@qq.com"
 fi
 git init
-git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee，
+git remote add orgin $giteeUrl   # 因为默认绑定的是GitHub，所以手动绑定gitee
 git add -A
 git commit -m "deploy"
 git push -f $giteeUrl master:gh-pages

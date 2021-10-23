@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# 本脚本里，请将githubUrl变量改为自己的GitHub地址，以及28和29行代码的地址
+
 # 确保脚本抛出遇到的错误
 set -e
 
