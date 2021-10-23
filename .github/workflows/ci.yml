@@ -31,8 +31,8 @@ jobs: # 工作流
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
         with:
-          SOURCE: 'git@github.com:Kele-Bingtang/blog.git'    #github 仓库地址
-          DESTINATION: 'git@gitee.com:kele-bingtang/blog.git'    #gitee 仓库地址
+          source-repo: 'git@github.com:Kele-Bingtang/blog.git'    #github 仓库地址
+          destination-repo: 'git@gitee.com:kele-bingtang/blog.git'    #gitee 仓库地址
          
       - name: run deploy.sh # 步骤4：执行脚本deploy.sh，仅仅只是名字
         env: # 设置环境变量，未设置则不运行
