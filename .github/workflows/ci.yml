@@ -28,13 +28,13 @@ jobs: # 工作流
 
        # 遭遇的问题：
         #  source-repo，destination-repo必须小写，我是大写了
-      - name: run deploy.sh # 步骤4：执行脚本deploy.sh，仅仅只是名字
+      - name: run deploy.sh # 步骤3：执行脚本deploy.sh，仅仅只是名字
         env: # 设置环境变量，未设置则不运行
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }} # toKen私密变量
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }} # gitee的ssh
         run: npm install && npm run deploy
 
-      - name: Push Matser To Gitee  # 步骤3：GitHub 内容同步到 Gitee，同步仓库是master
+      - name: Push Matser To Gitee  # 步骤4：GitHub 内容同步到 Gitee，同步仓库是master
         uses: wearerequired/git-mirror-action@master
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
@@ -42,7 +42,7 @@ jobs: # 工作流
           source-repo: 'git@github.com:Kele-Bingtang/blog.git'    #github 仓库地址
           destination-repo: 'git@gitee.com:kele-bingtang/blog.git'    #gitee 仓库地址
         
-      #   # 自动部署到 Gitee
+      #   # 自动部署到 Gitee Pages
       # - name: Build Gitee Pages
       #   uses: yanglbme/gitee-pages-action@main
       #   with:
