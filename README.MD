@@ -1,5 +1,6 @@
 ## 目录页的front matter
 
+
 ---
 pageComponent: # 使用页面组件
   name: Catalogue # 组件名：Catalogue => 目录页组件 ，使用目录页时 必须 设置为Catalogue
@@ -91,6 +92,16 @@ sticky: 1  # 置顶，1最高
 3.ActiveMQ
 4.RocketMQ
 5.Kafka
+
+
+更新图片：
+JavaDoc
+包机制
+
+替换笔记：
+Java集合
+juc多线程
+JavaWeb
 
 
 
