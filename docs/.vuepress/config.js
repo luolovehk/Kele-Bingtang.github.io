@@ -8,11 +8,10 @@ module.exports = {
   theme: 'vdoing', // 使用npm包主题
   title: penName + '\'s ' + title,
   description: '这个舞台将会被你的才华踩在脚下，同时你也会将它带到新的高度！',
-  // base: '/', // 格式：'/<仓库名>/'， 默认'/'
+  base: '/notes-blog/', // 格式：'/<仓库名>/'， 默认'/'
   markdown: {
     lineNumbers: true, // 代码行号
   },
-  base: '/blog/',
   head,
   plugins,
   themeConfig,

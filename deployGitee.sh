@@ -15,11 +15,11 @@ cd docs/.vuepress/dist
 # 打包代码同步到 gitee gh-pages分支
 if [ -z "$SSH_PRIVATE_KEY" ]; then
   msg='deploy'
-  giteeUrl=git@gitee.com:kele-bingtang/blog.git
+  giteeUrl=git@gitee.com:kele-bingtang/notes-blog.git
   # echo '如果是空字符串，则不部署到gitee'
 else
   msg='来自gitee actions的自动部署'
-  giteeUrl=git@gitee.com:kele-bingtang/blog.git  #gitee 仓库ssh地址
+  giteeUrl=git@gitee.com:kele-bingtang/notes-blog.git  #gitee 仓库ssh地址
   git config --global user.name "Kele-Bingtang"
   git config --global user.email "2456019588@qq.com"
 fi

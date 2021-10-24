@@ -1,4 +1,4 @@
-// 本内容计划将使用，目前还未使用，仅作为位置参考。方便查找
+
 
 //注意：如果修改penName和title，记得前往docs/index里第4行 修改，尽量统一
 // 左上角的笔名
@@ -12,7 +12,7 @@ const avatar = '/img/user/avatar.png'
 // 头像下的昵称
 const name = 'Ship Liu'
 // 头像下的签名
-const slogan = '学习的业务人';
+const slogan = '朝圣的使徒，在走向编程的殿堂';
 
 module.exports = {
   penName,
