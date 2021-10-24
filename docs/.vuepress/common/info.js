@@ -8,11 +8,11 @@ const title = 'Blog';
 // 底部的 | 后的描述
 const footerTitle = 'Blog';
 // 头像图片
-const avatar = '/img/user/avatar.png'
+const avatar = 'https://cdn.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png'
 // 头像下的昵称
 const name = 'Ship Liu'
 // 头像下的签名
-const slogan = '朝圣的使徒，在走向编程的殿堂';
+const slogan = '朝圣的使徒，正在走向编程的至高殿堂！';
 
 module.exports = {
   penName,
