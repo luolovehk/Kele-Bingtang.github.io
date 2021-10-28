@@ -16,7 +16,7 @@ module.exports = {
         { text: '收藏', link: '/whell/web/' },
         { text: '关于', link: '/about/' },
       ]
-    }
+    },
   ]
 }
 

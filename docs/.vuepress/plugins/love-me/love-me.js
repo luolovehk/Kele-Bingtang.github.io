@@ -16,7 +16,6 @@ export default () => {
                   typeof item.className === 'string' && item.className.indexOf(EXCLUDECLASS) > -1 ? mark = false : ''
                 }
               })
-              
               if(mark) {
                 t && t(),
                 o(e)

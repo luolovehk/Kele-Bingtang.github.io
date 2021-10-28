@@ -10,7 +10,7 @@ module.exports = {
   description: '这个舞台将会被你的才华踩在脚下，同时你也会将它带到新的高度！',
   base: '/notes-blog/', // 格式：'/<仓库名>/'， 默认'/'
   markdown: {
-    lineNumbers: true, // 代码行号
+    lineNumbers: true, // 显示代码块的行号
   },
   head,
   plugins,
