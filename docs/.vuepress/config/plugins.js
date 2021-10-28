@@ -83,11 +83,11 @@ module.exports = [
     {
       choosen: 'gitalk',
       options: {
-        clientID: 'a6e1355287947096b88b',
-        clientSecret: 'f0e77d070fabfcd5af95bebb82b2d574d7248d71',
-        repo: 'blog-gitalk-comment', // GitHub 仓库
-        owner: 'kele-bingtang', // GitHub仓库所有者
-        admin: ['kele-bingtang'], // 对仓库有写权限的人
+        clientID: 'c04227eafac4679001c7',
+        clientSecret: 'b77b38cf7272b5a01bf109c24de4b8cb5345d0a0',
+        repo: 'notes-blog', // GitHub 仓库
+        owner: 'Kele-Bingtang', // GitHub仓库所有者
+        admin: ['Kele-Bingtang'], // 对仓库有写权限的人
         // distractionFreeMode: true,
         pagerDirection: 'last', // 'first'正序 | 'last'倒序
         id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
