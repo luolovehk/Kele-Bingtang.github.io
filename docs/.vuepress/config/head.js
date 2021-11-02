@@ -6,7 +6,7 @@ module.exports = [
     'meta',
     {
       name: 'keywords',
-      content: 'OldKbt个人博客，vuepress搭建，学习Java、web、框架、微服务、工具、前端等相关知识',
+      content: 'Young Kbt个人博客，VuePress搭建，学习Java、web、框架、微服务、工具、前端等相关知识',
     },
   ],
   ['meta', { name: 'baidu-site-verification', content: '7F55weZDDc' }], // 百度统计的站长验证
