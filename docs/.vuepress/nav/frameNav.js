@@ -22,7 +22,7 @@ module.exports =  {
       text: '消息中间件',
       items: [
         { text: 'ActiveMQ', link: '/activemq/' },
-        { text: 'RabbitMQ', link: '/rabbitmq/' },
+        { text: 'RabbitMQ', link: '/middleware/introduce/' },
         { text: 'RocketMQ', link: '/rocketmq/' },
         { text: 'Kafka', link: '/kafka/' },
       ]
