@@ -1,6 +1,8 @@
+欢迎来到我的博客，请坐下，细细品尝吧，希望不会让你失望。
+
 ## 目录页的front matter
 
-
+``` md
 ---
 pageComponent: # 使用页面组件
   name: Catalogue # 组件名：Catalogue => 目录页组件 ，使用目录页时 必须 设置为Catalogue
@@ -17,8 +19,11 @@ article: false # 不是文章页 (不显示面包屑栏、最近更新栏等)
 comment: false # 不显示评论栏
 editLink: false # 不显示编辑按钮
 ---
+```
 
 ## 笔记文档的front matter
+
+```md
 ---
 title:     # 页面标题
 date:     # 创建日期
@@ -29,8 +34,11 @@ categories:  # 所在目录
 tags:    # 所属标签
   - 
 ---
+```
 
 ## 完整的front matter 
+
+```md
 ---
 title: 标题
 date: 2020-02-21 14:40:19
@@ -49,7 +57,7 @@ author:
  link: https://xxx.com
 sticky: 1  # 置顶，1最高
 ---
-
+```
 
 ## VSCODE代码片段，光标位置设置多个值可供选择
 
@@ -79,29 +87,6 @@ sticky: 1  # 置顶，1最高
     CURRENT_HOUR 小时，24小时制
     CURRENT_MINUTE 分钟
     CURRENT_SECOND 秒数
-
-
-## 问题：
-1.MySQL顺序修改：索引介绍和逻辑框架互换
-2.mysql的并发参数优化，目录无法实现跳转
-3.Redis笔记更新
-
-## 如果不想显示预览目录页时侧边栏的话，记得把目录页的sidebar改为false：
-1.Oracle
-2.Spring
-3.ActiveMQ
-4.RocketMQ
-5.Kafka
-
-
-更新图片：
-JavaDoc
-包机制
-
-替换笔记：
-Java集合
-juc多线程
-JavaWeb
 
 
 
