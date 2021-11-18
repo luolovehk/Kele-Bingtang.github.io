@@ -13,7 +13,7 @@ module.exports = {
       text: 'NoSQL 数据库',
       items: [
         { text: 'Redis', link: '/redis/' },
-        { text: 'ElasticSearch', link: '/es/' },
+        { text: 'ElasticSearch', link: '/es/introduce/' },
         { text: 'MongoDB', link: '/mongodb/' },
       ]
     },
