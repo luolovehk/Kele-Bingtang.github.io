@@ -10,13 +10,13 @@ module.exports = {
         { text: 'JavaScript', link: '/javascript/' },
       ]
     },
-    {
-      text: '进阶',
-      items: [
-        { text: 'jQuery', link: '/jquery/' },
-        { text: 'Node', link: '/node/' },
-      ]
-    },
+    // {
+    //   text: '进阶',
+    //   items: [
+    //     { text: 'jQuery', link: '/jquery/' },
+    //     { text: 'Node', link: '/node/' },
+    //   ]
+    // },
     {
       text: '框架',
       items: [
