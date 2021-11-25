@@ -2,6 +2,7 @@
 const javaNav = require("../nav/javaNav");
 const databaseNav = require("../nav/databaseNav");
 const frameNav = require("../nav/frameNav");
+const springNav = require("../nav/springNav")
 // 微服务统一放在框架里
 // const cloudNav = require("../nav/cloudNav");
 const toolNav = require("../nav/toolNav");
@@ -15,6 +16,7 @@ module.exports = [
   javaNav,   //Java导航
   databaseNav,  // 数据库导航
   frameNav,   // 框架导航
+  springNav,  // Spring生态导航
   // cloudNav,  // 微服务导航
   toolNav,  // 工具导航
   frontEnd,  // 前端导航

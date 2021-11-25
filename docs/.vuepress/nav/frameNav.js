@@ -10,21 +10,18 @@ module.exports =  {
       ]
     },
     {
-      text: 'Spring生态',
-      items: [
-        { text: 'Spring', link: '/spring/' },
-        { text: 'Spring MVC', link: '/spring-mvc/' },
-        { text: 'Spring Boot', link: '/spring-boot/' },
-        { text: 'Spring Security', link: '/spring-security/' },
-      ]
-    },
-    {
       text: '消息中间件',
       items: [
         { text: 'ActiveMQ', link: '/activemq/' },
         { text: 'RabbitMQ', link: '/rabbitmq/' },
         { text: 'RocketMQ', link: '/rocketmq/' },
         { text: 'Kafka', link: '/kafka/' },
+      ]
+    },
+    {
+      text: '进阶服务',
+      items: [
+        { text: 'Nginx', link: '/nginx/' },
       ]
     },
     // {
