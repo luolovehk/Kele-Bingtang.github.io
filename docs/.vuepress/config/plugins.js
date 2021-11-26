@@ -2,7 +2,7 @@
 module.exports = [
   // 本地插件
   [require('../plugins/love-me'), { // 鼠标点击爱心特效
-    color: '#11a8cd', // 爱心颜色，默认随机色
+    // color: '#11a8cd', // 爱心颜色，默认随机色
     excludeClassName: 'theme-vdoing-content' // 要排除元素的class, 默认空''
   }],
 
@@ -66,7 +66,7 @@ module.exports = [
   [
     'vuepress-plugin-zooming', // 放大图片
     {
-      selector: '.theme-vdoing-content img:not(.no-zoom)', // 排除class是no-zoom的图片
+      selector: '.theme-vdoing-content img:not(.no-zoom)', // 排除 class 是 no-zoom 的图片
       options: {
         bgColor: 'rgba(0,0,0,0.6)',
       },
