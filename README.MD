@@ -55,7 +55,7 @@ editLink: false
 author:
  name: 作者
  link: https://xxx.com
-sticky: 1  # 置顶，1最高
+sticky: 1  # 置顶，1 最高，数字越大，置顶地位越低下
 ---
 ```
 
