@@ -7,7 +7,7 @@ const { penName, title } = require('./common/info')
 module.exports = {
   theme: 'vdoing', // 使用npm包主题
   title: penName + '\'s ' + title,
-  description: '这个舞台将会被你的才华踩在脚下，同时你也会将它带到新的高度！',
+  description: '故事由我书写，旅程由你见证，传奇由她聆听。',
   base: '/notes-blog/', // 格式：'/<仓库名>/'， 默认'/'
   markdown: {
     lineNumbers: true, // 显示代码块的行号
