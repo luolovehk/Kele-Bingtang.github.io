@@ -16,7 +16,7 @@ module.exports = [
   ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
   ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
   // 百度统计 js
-  ['script', { src: '/docs/.vuepress/common/baidu.js' }],
+  ['script', { src: '../common/baidu.js' }],
 
  /*  [
     'script',
