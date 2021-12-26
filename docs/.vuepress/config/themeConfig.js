@@ -1,7 +1,7 @@
 const nav = require('./nav.js');
 const htmlModules = require('./htmlModules.js');
 
-const { penName, avatar, name, slogan, footerTitle } = require("../common/info");
+const { penName, link, avatar, name, slogan, footerTitle } = require("../common/info");
 
 // 主题配置
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
   // category: false, // 是否打开分类功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含分类字段 2.页面中显示与分类相关的信息和模块 3.自动生成分类页面（在@pages文件夹）。如关闭，则反之。
   // tag: false, // 是否打开标签功能，默认true。 如打开，会做的事情有：1. 自动生成的frontmatter包含标签字段 2.页面中显示与标签相关的信息和模块 3.自动生成标签页面（在@pages文件夹）。如关闭，则反之。
   // archive: false, // 是否打开归档功能，默认true。 如打开，会做的事情有：1.自动生成归档页面（在@pages文件夹）。如关闭，则反之。
-  // categoryText: '随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
+  categoryText: '技术随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
 
   // bodyBgImg: [
   //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175828.jpeg',
@@ -49,7 +49,7 @@ module.exports = {
   author: {
     // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
     name: penName, // 必需
-    link: 'https://github.com/kele-bingtang', // 可选的
+    link, // 可选的
   },
   blogger: {
     // 博主信息，显示在首页侧边栏
@@ -62,19 +62,29 @@ module.exports = {
     // iconfontCssFile: '//at.alicdn.com/t/font_1678482_u4nrnp8xp6g.css', // 可选，阿里图标库在线css文件地址，对于主题没有的图标可自由添加
     icons: [
       {
-        iconClass: 'icon-youjian',
-        title: '发邮件',
-        link: 'mailto:2456019588@qq.com',
-      },
-      {
         iconClass: 'icon-github',
         title: 'GitHub',
         link: 'https://github.com/kele-bingtang',
       },
       {
-        iconClass: 'icon-erji',
-        title: '听音乐',
-        link: 'https://music.163.com/#/playlist?id=755597173',
+        iconClass: 'icon-gitee',
+        title: 'Gitee',
+        link: 'https://gitee.com/kele-bingtang',
+      },
+      {
+        iconClass: 'icon-rss',
+        title: '网站首页',
+        link: 'https://www.youngkbt.cn',
+      },
+      {
+        iconClass: 'icon-QQ',
+        title: 'QQ',
+        link: 'http://wpa.qq.com/msgrd?v=3&uin=28761025&site=qq&menu=yes',
+      },
+      {
+        iconClass: 'icon-youjian',
+        title: '联系我',
+        link: 'https://www.youngkbt.cn/?contact=true',
       },
     ],
   },
@@ -82,7 +92,7 @@ module.exports = {
     // 页脚信息
     createYear: 2021, // 博客创建年份
     copyrightInfo:
-      penName + ' | ' + footerTitle, // 博客版权信息，支持a标签
+      penName + ' | ' + footerTitle + '<br> <a href="http://beian.miit.gov.cn/" target="_blank">桂ICP备2021009994号</a>', // 博客版权信息，支持a标签
   },
   // htmlModules // 插入hmtl模块
 }
