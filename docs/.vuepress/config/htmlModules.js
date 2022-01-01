@@ -20,17 +20,55 @@
 
 module.exports = {
   homeSidebarB:
-    `<div style="padding: 0.95rem">
-    <p style="
-      color: var(--textColor);
-      opacity: 0.9;
-      font-size: 20px;
-      font-weight: bold;
-      margin: 0 0 8px 0;
-    ">微信</p>
-    <p>
-      Kele_Bingtang
-    </p>
+    `<div style="padding: 0.95rem; font-size: 0.875rem;">
+      <div style="text-align: center; color: #888; font-weight: bold; padding: 0 0 10px 0;">
+        <i class="iconfont icon-award" style="font-size: 0.875rem; font-weight: 900;width: 1.25em;"></i>
+        <span>站点信息</span>
+      </div>
+      <div class="webinfo-item" style="padding: 8px 0 0; margin: 0;">
+        <div style="display: inline-block;">
+          文章数目：
+        </div>
+        <div style="display: inline-block; float: right;">
+          13 篇
+        </div>
+      </div>
+
+      <div class="webinfo-item" style="padding: 8px 0 0; margin: 0;">
+        <div style="display: inline-block;">
+          已运行时间：
+        </div>
+        <div style="display: inline-block; float: right;">
+          189 天
+        </div>
+      </div>
+
+      <div class="webinfo-item" style="padding: 8px 0 0; margin: 0;">
+        <div style="display: inline-block;">
+          本站总字数：
+        </div>
+        <div style="display: inline-block; float: right;">
+          45.5k 字
+        </div>
+      </div>
+
+      <div class="webinfo-item" style="padding: 8px 0 0; margin: 0;">
+        <div style="display: inline-block;">
+          本站被访问了：
+        </div>
+        <div style="display: inline-block; float: right;">
+          1202 次
+        </div>
+      </div>
+
+      <div class="webinfo-item" style="padding: 8px 0 0; margin: 0;">
+        <div style="display: inline-block;">
+          最后活动时间：
+        </div>
+        <div style="display: inline-block; float: right;">
+          2 天前
+        </div>
+      </div>
     </div>`,
   // `<!-- 纵向自适应 -->
   // <ins class="adsbygoogle"

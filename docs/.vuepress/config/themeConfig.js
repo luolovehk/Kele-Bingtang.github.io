@@ -1,7 +1,9 @@
-const nav = require('./nav.js');
+const nav = require('../common/nav.js');
+const footer = require('../common/footer.js');
 const htmlModules = require('./htmlModules.js');
+const { readFileList, readFileWords } = require('../webSiteInfo/readFile');
 
-const { penName, link, avatar, name, slogan, footerTitle } = require("../common/info");
+const { penName, link, avatar, name, slogan } = require("../common/info");
 
 // 主题配置
 module.exports = {
@@ -46,6 +48,14 @@ module.exports = {
 
   sidebar: 'structuring', // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | 自定义    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
 
+  // 博客站点信息（首页）
+  blogInfo: {
+    blogCreate: '2021-10-19', // 博客创建时间
+    mdFileCountType: 'archives',  // 文档数。archives 获取归档的文档数（默认），数组 readFileList(['xx']) 排除 xx 目录（可多个），获取其他目录的文档数。
+    totalWords: readFileWords(['00.目录页']),  // 本站文档总字数。readFileWords(['xx']) 排除 xx 目录（可多个），获取其他目录的文章字数，默认排除了 .vuepress 和 @page 目录
+    moutedEvent: '.tags-wrapper'   // 挂载在哪个元素后面，指的是挂载在哪个兄弟元素的后面，默认是热门标签 '.tags-wrapper' 后面
+  },
+
   author: {
     // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
     name: penName, // 必需
@@ -88,11 +98,6 @@ module.exports = {
       },
     ],
   },
-  footer: {
-    // 页脚信息
-    createYear: 2021, // 博客创建年份
-    copyrightInfo:
-      penName + ' | ' + footerTitle + '<br> <a href="http://beian.miit.gov.cn/" target="_blank">桂ICP备2021009994号</a>', // 博客版权信息，支持a标签
-  },
+  footer,
   // htmlModules // 插入hmtl模块
 }

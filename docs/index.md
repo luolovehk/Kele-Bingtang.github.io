@@ -91,3 +91,8 @@ App.__style__ = `
 </style>
 ```
 :::
+
+
+<ClientOnly>
+  <WebInfo/>
+</ClientOnly>

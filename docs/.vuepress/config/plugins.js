@@ -75,28 +75,47 @@ module.exports = [
   [
     'vuepress-plugin-baidu-tongji', // 百度统计
     {
-      hm: '503f098e7e5b3a5b5d8c5fc2938af002',
+      hm: 'efdb43e9c4335da1fbabf3840b82c3ed',
     },
   ],
   [
-    'vuepress-plugin-comment', // 评论
+    'vuepress-plugin-comment', // 评论插件
+    // 选择 Gitalk 评论
+    // {
+    //   choosen: 'gitalk',
+    //   options: {
+    //     clientID: 'c04227eafac4679001c7',
+    //     clientSecret: 'b77b38cf7272b5a01bf109c24de4b8cb5345d0a0',
+    //     repo: 'notes-blog', // GitHub 仓库
+    //     owner: 'Kele-Bingtang', // GitHub仓库所有者
+    //     admin: ['Kele-Bingtang'], // 对仓库有写权限的人
+    //     // distractionFreeMode: true,
+    //     pagerDirection: 'last', // 'first'正序 | 'last'倒序
+    //     id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
+    //     title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
+    //     labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
+    //     body:
+    //       '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
+    //   },
+    // },
+    // 选择 Valine 评论
     {
-      choosen: 'gitalk',
+      // 具体参数请看官网：https://valine.js.org/
+      choosen: 'valine', 
+      // options 选项中的所有参数，会传给 Valine 的配置
       options: {
-        clientID: 'c04227eafac4679001c7',
-        clientSecret: 'b77b38cf7272b5a01bf109c24de4b8cb5345d0a0',
-        repo: 'notes-blog', // GitHub 仓库
-        owner: 'Kele-Bingtang', // GitHub仓库所有者
-        admin: ['Kele-Bingtang'], // 对仓库有写权限的人
-        // distractionFreeMode: true,
-        pagerDirection: 'last', // 'first'正序 | 'last'倒序
-        id: '<%- (frontmatter.permalink || frontmatter.to.path).slice(-16) %>', //  页面的唯一标识,长度不能超过50
-        title: '「评论」<%- frontmatter.title %>', // GitHub issue 的标题
-        labels: ['Gitalk', 'Comment'], // GitHub issue 的标签
-        body:
-          '页面：<%- window.location.origin + (frontmatter.to.path || window.location.pathname) %>', // GitHub issue 的内容
-      },
-    },
+        el: '#valine-vuepress-comment',
+        appId: 'aNoBTRmpqQLewUkEgcLQG648-gzGzoHsz',
+        appKey: 'bBXuTfFx7q5UHNbCFg8QUzF7',
+        placeholder: '请留下你的足迹 ~~',
+        // 有 URL、''、mp、identicon、monsterid、wavatar、retro、robohash、hide 头像选择，具体头像是什么样子，请访问 https://valine.js.org/avatar.html
+        avatar: 'mp',  
+        pageSize: 10,   // 评论列表分页，每页条数
+        visitor: true,    // 文章访问量统计
+        recordIP: false,   // 是否记录评论者 IP
+        enableQQ: true,   // 是否启用昵称框自动获取 QQ 昵称和 QQ 头像, 默认关闭
+      }
+    }
   ],
   [
     '@vuepress/last-updated', // "上次更新"时间格式
@@ -106,6 +125,20 @@ module.exports = [
         return dayjs(timestamp).format('YYYY/MM/DD, HH:mm:ss')
       },
     },
+  ],
+   // last-reading 插件
+   [
+    'last-reading',
+    {
+      popupConfig: {
+        message: '检测到您上一次阅读的位置，是否移至该位置？',
+        buttonText: '确定'
+      },
+    }
+  ],
+  // 顶部阅读进度插件
+  [
+    'reading-progress'
   ],
 ]
 
