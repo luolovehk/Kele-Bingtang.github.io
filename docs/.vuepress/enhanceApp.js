@@ -5,56 +5,61 @@ export default ({
   siteData, // 站点元数据
   isServer // 当前应用配置是处于 服务端渲染 或 客户端
 }) => {
-  router.beforeEach((to, from, next) => {
-    // 路由切换，触发百度的 pv 统计
-    if (typeof _hmt != "undefined") {
-      if (to.path) {
-        _hmt.push(["_trackPageview", to.path]);
+  if (!isServer) {
+    router.beforeEach((to, from, next) => {
+      // 路由切换，触发百度的 pv 统计
+      if (typeof _hmt != "undefined") {
+        if (to.path) {
+          _hmt.push(["_trackPageview", to.path]);
+        }
       }
-    }
-    next();
+      next();
 
-    setTimeout(() => {
-      // 首页或者文章页的访问量
-      if (to.path == '/') {
-        getIndexViewCouter();
-      } else if (to.path != '/' && to.path != from.path) { // # 号也会触发路由变化，排除掉
-        // 刷新页面或进入新的页面后，如果原来位置的内容还存在，则删除掉，最后重新插入渲染
-        removeElementByClassName('page-view-js');
-        removeElementByClassName('page-view');
-        removeElementByClassName('book-words');
-        siteData.pages.forEach((itemPage) => {
-          if (itemPage.path == to.path) {
-            if (itemPage.frontmatter.article == undefined || itemPage.frontmatter.article) {  // 排除掉 article 为 false 的文章
-              const { eachFileWords, pageView } = siteData.themeConfig.blogInfo;
-              // 下面两个 if 可以调换位置，从而让文章的浏览量和字数内容交换
-              if (eachFileWords) {
-                eachFileWords.forEach((itemFile) => {
-                  if (itemFile.permalink == itemPage.frontmatter.permalink) {
-                    addPageWordsCount(itemFile.wordsCount);
-                  }
-                });
+      setTimeout(() => {
+        // 首页或者文章页的访问量
+        if (to.path == '/') {
+          getIndexViewCouter();
+        } else if (to.path != '/' && to.path != from.path) { // # 号也会触发路由变化，排除掉
+          // 刷新页面或进入新的页面后，如果原来位置的内容还存在，则删除掉，最后重新插入渲染
+          removeElement('.page-view-js');
+          removeElement('.page-view');
+          removeElement('.book-words');
+          siteData.pages.forEach((itemPage) => {
+            if (itemPage.path == to.path) {
+              if (itemPage.frontmatter.article == undefined || itemPage.frontmatter.article) {  // 排除掉 article 为 false 的文章
+                const { eachFileWords, pageView } = siteData.themeConfig.blogInfo;
+                // 下面两个 if 可以调换位置，从而让文章的浏览量和字数内容交换
+                if (eachFileWords) {
+                  eachFileWords.forEach((itemFile) => {
+                    if (itemFile.permalink == itemPage.frontmatter.permalink) {
+                      addPageWordsCount(itemFile.wordsCount);
+                    }
+                  });
+                }
+                if (pageView || pageView == undefined) {
+                  addPageView();
+                  // 挂载成功需要一点时间
+                  setTimeout(() => {
+                    getPageViewCouter();
+                  }, 500);
+                }
+
+                return;
               }
-              if (pageView || pageView == undefined) {
-                addPageView();
-                // 挂载成功需要一点时间
-                setTimeout(() => {
-                  getPageViewCouter();
-                }, 500);
-              }
-              
-              return;
             }
-          }
-        })
-      }
-    }, 200);
-  })
-  function removeElementByClassName(element) {
-    var removeElement = document.getElementsByClassName(element)[0];
-    if (removeElement) {
-      removeElement.parentNode.removeChild(removeElement);
-    }
+          })
+        }
+      }, 200);
+    })
+  }
+}
+/**
+ * 如果元素存在，则删除
+ */
+function removeElement(selector) {
+  var element = document.querySelector(selector);
+  if (element) {
+    element.parentNode.removeChild(element);
   }
 }
 /**
@@ -198,3 +203,5 @@ function isMountedView(element, parentElement) {
 //     }, 100);
 //   }
 // }
+
+

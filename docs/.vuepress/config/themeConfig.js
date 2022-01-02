@@ -1,7 +1,7 @@
 const nav = require('../common/nav.js');
 const footer = require('../common/footer.js');
 const htmlModules = require('./htmlModules.js');
-const { readFileList, readTotalFileWords, readEachFileWords } = require('../webSiteInfo/readFile');
+const { readFileList, readTotalFileWords, readEachFileWords } = require('../webSiteInfo/readFile.js');
 
 const { penName, link, avatar, name, slogan } = require("../common/info");
 

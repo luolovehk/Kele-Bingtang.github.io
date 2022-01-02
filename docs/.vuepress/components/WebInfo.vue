@@ -102,7 +102,6 @@ export default {
       }
       // 最后一次活动时间
       this.lastActiveDate = timeDiff(this.$sortPosts[0].lastUpdated);
-      console.log(moutedEvent);
       mountedWebInfo(moutedEvent);
     }
   },
