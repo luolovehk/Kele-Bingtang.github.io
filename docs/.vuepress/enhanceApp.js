@@ -125,10 +125,12 @@ function getPageViewCouter() {
       } else {
         clearInterval(interval);
       }
-    }, 2000);
-  }, 2000);
+    }, 3000);
+  }, 3000);
 }
-
+/**
+ * 添加浏览量元素
+ */
 function addPageView() {
   // 创建访问量的元素
   let template = document.createElement('div');
@@ -141,7 +143,9 @@ function addPageView() {
 
   mountedView(template);
 }
-
+/**
+ * 添加当前文章页的字数元素
+ */
 function addPageWordsCount(wordsCount) {
   if (wordsCount) {
     let template = document.createElement('div');
