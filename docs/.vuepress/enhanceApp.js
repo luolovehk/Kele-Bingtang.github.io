@@ -41,7 +41,7 @@ export default ({
                   // 挂载成功需要一点时间
                   setTimeout(() => {
                     getPageViewCouter();
-                  }, 500);
+                  }, 1000);
                 }
 
                 return;
@@ -93,8 +93,8 @@ function getIndexViewCouter() {
       } else {
         clearInterval(interval);
       }
-    }, 2000);
-  }, 2000);
+    }, 3000);
+  }, 3000);
 }
 /**
  * 文章页的访问量
