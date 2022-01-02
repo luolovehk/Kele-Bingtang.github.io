@@ -51,9 +51,9 @@ export default ({
     }, 200);
   })
   function removeElementByClassName(element) {
-    var element = document.getElementsByClassName(element)[0];
-    if (element) {
-      element.parentNode.removeChild(element);
+    var removeElement = document.getElementsByClassName(element)[0];
+    if (removeElement) {
+      removeElement.parentNode.removeChild(removeElement);
     }
   }
 }
