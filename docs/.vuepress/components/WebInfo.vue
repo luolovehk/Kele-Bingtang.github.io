@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { dayDiff, timeDiff } from "../webSiteInfo/utils";
+import { dayDiff, timeDiff, lastUpdatePosts } from "../webSiteInfo/utils";
 export default {
   data() {
     return {
@@ -101,7 +101,7 @@ export default {
         this.totalWords = totalWords;
       }
       // 最后一次活动时间
-      this.lastActiveDate = timeDiff(this.$sortPosts[0].lastUpdated);
+      this.lastActiveDate = timeDiff(lastUpdatePosts(this.$site.pages)[0].lastUpdated);
       mountedWebInfo(moutedEvent);
     }
   },

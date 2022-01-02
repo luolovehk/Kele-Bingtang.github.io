@@ -12,6 +12,31 @@ export function zero(d) {
 }
 
 /**
+ * 计算最后活动时间
+ */
+export function lastUpdatePosts(posts) {
+  posts.sort((prev, next) => {
+    return compareDate(prev, next);
+  });
+  return posts;
+}
+
+// 获取时间的时间戳
+export function getTimeNum(post) {
+  let dateStr = post.lastUpdated || new Date()
+  let date = new Date(dateStr)
+  if (date == "Invalid Date" && dateStr) { // 修复new Date()在Safari下出现Invalid Date的问题
+    date = new Date(dateStr.replace(/-/g, '/'))
+  }
+  return date.getTime()
+}
+
+// 比对时间
+export function compareDate(a, b) {
+  return getTimeNum(b) - getTimeNum(a)
+}
+
+/**
  * 获取两个日期相差多少天
  */
 export function dayDiff(startDate, endDate) {
@@ -41,19 +66,18 @@ export function timeDiff(startDate, endDate) {
   }
   // 计算时间戳的差
   const diffValue = parseInt((Math.abs(endDate - startDate) / 1000));
-
   if (diffValue == 0) {
     return '刚刚';
   } else if (diffValue < 60) {
     return diffValue + ' 秒';
   } else if (parseInt(diffValue / 60) < 60) {
-    return parseInt(diffValue / 60) + ' 分钟';
+    return parseInt(diffValue / 60) + ' 分';
   } else if (parseInt(diffValue / (60 * 60)) < 24) {
-    return parseInt(diffValue / (60 * 60)) + ' 小时';
+    return parseInt(diffValue / (60 * 60)) + ' 时';
   } else if (parseInt(diffValue / (60 * 60 * 24)) < getDays(startDate.getMonth, startDate.getFullYear)) {
     return parseInt(diffValue / (60 * 60 * 24)) + ' 天';
   } else if (parseInt(diffValue / (60 * 60 * 24 * getDays(startDate.getMonth, startDate.getFullYear))) < 12) {
-    return parseInt(diffValue / (60 * 60 * 24 * getDays(startDate.getMonth, startDate.getFullYear))) + ' 个月';
+    return parseInt(diffValue / (60 * 60 * 24 * getDays(startDate.getMonth, startDate.getFullYear))) + ' 月';
   } else {
     return parseInt(diffValue / (60 * 60 * 24 * getDays(startDate.getMonth, startDate.getFullYear) * 12)) + ' 年';
   }
@@ -62,7 +86,7 @@ export function timeDiff(startDate, endDate) {
 /**
  * 判断当前月的天数（28、29、30、31）
  */
-function getDays(mouth, year) {
+export function getDays(mouth, year) {
   let days = 30
   if (mouth === 2) {
     days = year % 4 === 0 ? 29 : 28
@@ -77,7 +101,7 @@ function getDays(mouth, year) {
  * 已运行时间低于一天显示时分秒
  * 目前该函数没有使用，低于一天直接显示不到一天
  */
-function getTime(startDate, endDate){
+export function getTime(startDate, endDate) {
   if (day < 0) {
     let hour = parseInt(Math.abs(new Date(startDate) - new Date(endDate)) / (1000 * 60 * 60));
     if (hour > 0) {
