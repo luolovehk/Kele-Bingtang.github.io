@@ -16,7 +16,7 @@
     <div class="webinfo-item">
       <div class="webinfo-item-title">已运行时间：</div>
       <div class="webinfo-content">
-        {{ createToNowDay != 0 ? createToNowDay + ' 天' : "不到一天" }}
+        {{ createToNowDay != 0 ? createToNowDay + " 天" : "不到一天" }}
       </div>
     </div>
 
@@ -64,6 +64,11 @@ export default {
       totalWords: 0, // 本站总字数
     };
   },
+  computed: {
+    $lastUpdatePosts() {
+      return lastUpdatePosts(this.$filterPosts);
+    },
+  },
   mounted() {
     // Young Kbt
     if (Object.keys(this.$themeConfig.blogInfo).length > 0) {
@@ -94,14 +99,14 @@ export default {
           }
         });
         this.totalWords = Math.round(archivesWords / 100) / 10 + "k";
-      } else if(totalWords == "archives"){
+      } else if (totalWords == "archives") {
         this.totalWords = 0;
         console.log("如果 totalWords 使用 archives，必须传入 eachFileWords");
-      }else{
+      } else {
         this.totalWords = totalWords;
       }
       // 最后一次活动时间
-      this.lastActiveDate = timeDiff(lastUpdatePosts(this.$site.pages)[0].lastUpdated);
+      this.lastActiveDate = timeDiff(this.$lastUpdatePosts[0].lastUpdated);
       mountedWebInfo(moutedEvent);
     }
   },
