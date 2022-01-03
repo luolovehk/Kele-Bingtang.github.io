@@ -4,7 +4,10 @@ const baidutj = require("../common/baidutj.js");
 module.exports = [
   // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
   ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
+
   ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3077305_wawne43ztng.css' }], // 阿里云在线矢量库
+  ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],  // 解决 Chrome 网站统计不准确问题
+  
   [
     'meta',
     {
@@ -13,7 +16,6 @@ module.exports = [
     },
   ],
   ['meta', { name: 'theme-color', content: '#11a8cd' }], // 移动浏览器主题颜色
-  ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],  // 解决 Chrome 网站统计不准确问题
 
   ['script', { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' }],
   ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
