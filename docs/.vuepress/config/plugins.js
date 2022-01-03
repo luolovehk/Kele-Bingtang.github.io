@@ -1,5 +1,12 @@
 // 插件配置
 module.exports = [
+  // 自定义插件
+  [
+    {
+      name: 'custom-plugins',
+      globalUIComponents: ["LastReadingPopup"], // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
+    }
+  ],
   // 本地插件
   [require('../plugins/love-me'), { // 鼠标点击爱心特效
     // color: '#11a8cd', // 爱心颜色，默认随机色
@@ -127,15 +134,15 @@ module.exports = [
     },
   ],
    // last-reading 插件
-   [
-    'last-reading',
-    {
-      popupConfig: {
-        message: '检测到您上一次阅读的位置，是否移至该位置？',
-        buttonText: '确定'
-      },
-    }
-  ],
+  //  [
+  //   'last-reading',
+  //   {
+  //     popupConfig: {
+  //       message: '检测到您上一次阅读的位置，是否移至该位置？',
+  //       buttonText: '确定'
+  //     },
+  //   }
+  // ],
   // 顶部阅读进度插件
   [
     'reading-progress'
