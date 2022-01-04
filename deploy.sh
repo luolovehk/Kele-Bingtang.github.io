@@ -15,10 +15,10 @@ cd docs/.vuepress/dist
 # 如果手运行该脚本，则执行 if 里的，如果是 GitHub 自动执行该脚本，则是 else 里的
 if [ -z "$GITHUB_TOKEN" ]; then
   msg='deploy'
-  githubUrl=git@github.com:Kele-Bingtang/notes-blog.git
+  githubUrl=git@github.com:Kele-Bingtang/Kele-Bingtang.github.io.git
 else
   msg='来自 Github actions 的自动部署'
-  githubUrl=https://Kele-Bingtang:${GITHUB_TOKEN}@github.com/Kele-Bingtang/notes-blog.git
+  githubUrl=https://Kele-Bingtang:${GITHUB_TOKEN}@github.com/Kele-Bingtang/Kele-Bingtang.github.io.git
   git config --global user.name "Kele_Bingtang"
   git config --global user.email "2456019588@qq.com"
 fi

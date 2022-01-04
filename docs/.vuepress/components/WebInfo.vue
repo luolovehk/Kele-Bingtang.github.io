@@ -213,7 +213,6 @@ function getIndexViewCouter() {
     transform: rotate(360deg);
   }
 }
-
 .loading {
   display: inline-block;
   animation: turn 1s linear infinite;

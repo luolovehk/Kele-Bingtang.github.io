@@ -9,7 +9,7 @@ module.exports = {
   // 如果使用 locales 的 title 和 description，则下方的 title 和 description 失效
   title: penName + title,
   description: 'Young Kbt个人博客, VuePress搭建, 使用了 Vdoing 主题, 学习Java, Web, 框架, 微服务, 工具, 前端等相关知识, 记录生活和技术路程, 同时分享编程技巧。',
-  base: '/', // 格式：'/<仓库名>/'， 默认'/'
+  // base: '/', // 格式：'/<仓库名>/'， 默认'/'
   markdown: {
     lineNumbers: true, // 显示代码块的行号
   },
