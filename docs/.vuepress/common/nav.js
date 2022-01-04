@@ -13,6 +13,9 @@ module.exports = [
   {
     text: '首页', link: '/'
   },
+  {
+    text: '百宝箱', link: '/tools/'
+  },
   javaNav,   //Java导航
   databaseNav,  // 数据库导航
   frameNav,   // 框架导航

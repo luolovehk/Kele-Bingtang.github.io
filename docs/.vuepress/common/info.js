@@ -4,11 +4,11 @@
 // 首页左上角 | 文章右上角的名字
 const penName = 'Young Kbt ';
 // 首页左上角的描述，衔接 penName
-const title = 'Blog';
+const title = 'World';
 // 文章右上角点击名字的跳转链接
 const link = "https://www.youngkbt.cn";
 // 底部的 | 后的描述
-const footerTitle = 'Blog';
+const footerTitle = 'World';
 // 头像图片
 const avatar = 'https://cdn.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png'
 // 头像下的昵称
