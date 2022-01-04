@@ -58,6 +58,13 @@ strong
   // color 
   color #00A55A
 
+.suggestions
+  max-height 800 px
+  overflow-y scroll
+.suggestions .highlight
+  color #64acff
+  font-weight bold
+
 .theme-mode-light
   --bodyBg: #f4f4f4
   --mainBg: rgba(255,255,255,1)
@@ -202,8 +209,8 @@ strong
   .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active,   // 导航栏的选中二级导航
   .buttons .button .select-box li.active,    // 当前主题模式
   .buttons .button .select-box li:hover,      // 三个主题模式悬停 
-  .search-box .suggestions .focused a:hover,   // 搜索框内容鼠标悬停
-  .archives-page .theme-vdoing-wrapper li a:hover   // 归档列表悬停
+  .archives-page .theme-vdoing-wrapper li a:hover,   // 归档列表悬停
+  .search-box .suggestions .focused a:hover   // 搜索框内容鼠标悬停
     color #b160ea
 
   .categories-wrapper .categories a:not(.active):hover,   // 文章分类悬停
@@ -214,7 +221,8 @@ strong
   .buttons .button:hover      // 右下角三个图标
     background #904ac2
     box-shadow 0 0 15px #904ac2
-  .pagination .pagination-list span.active     // 分页的当前页
+  .pagination .pagination-list span.active,     // 分页的当前页
+  .search-box .suggestions .parent-page-title   // 搜索框的标题
     background #904ac2
 
 // 阅读模式

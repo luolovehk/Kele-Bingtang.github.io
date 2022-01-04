@@ -5,7 +5,7 @@ module.exports = [
   // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
   ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
 
-  ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3077305_s3avioxi2ok.css' }], // 阿里云在线矢量库
+  ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3077305_pt8umhrn4k9.css' }], // 阿里在线矢量库
   ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],  // 解决 Chrome 网站统计不准确问题
   
   [

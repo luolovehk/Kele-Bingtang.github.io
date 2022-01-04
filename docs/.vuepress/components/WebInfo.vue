@@ -36,7 +36,13 @@
       <div class="webinfo-item-title">本站被访问了：</div>
       <div class="webinfo-content">
         <span id="busuanzi_container_site_pv">
-          <span id="busuanzi_value_site_pv" class="web-site-pv"></span> 次
+          <span id="busuanzi_value_site_pv" class="web-site-pv"
+            ><i
+              title="正在获取..."
+              class="loading iconfont icon-loading"
+            ></i>
+          </span>
+          次
         </span>
       </div>
     </div>
@@ -45,7 +51,13 @@
       <div class="webinfo-item-title">您的访问排名：</div>
       <div class="webinfo-content busuanzi">
         <span id="busuanzi_container_site_uv">
-          <span id="busuanzi_value_site_uv" class="web-site-uv"></span> 名
+          <span id="busuanzi_value_site_uv" class="web-site-uv"
+            ><i
+              title="正在获取..."
+              class="loading iconfont icon-loading"
+            ></i>
+          </span>
+          名
         </span>
       </div>
     </div>
@@ -192,5 +204,19 @@ function getIndexViewCouter() {
 .webinfo-content {
   display: inline-block;
   float: right;
+}
+@keyframes turn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: inline-block;
+  animation: turn 1s linear infinite;
+  -webkit-animation: turn 1s linear infinite;
 }
 </style>
