@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: /img/web.png
-heroText: Young Kbt Blog
+heroText: Young Kbt World
 tagline: 故事由我书写，旅程由你见证，传奇由她聆听。
 # actionText: 立刻进入 →
 # actionLink: /web/

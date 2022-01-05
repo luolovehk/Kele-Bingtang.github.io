@@ -1,5 +1,9 @@
 <template>
-  <div class="kbt-row">
+  <div>
+    <template v-if="cardData[0].title != undefined">
+        <div style="text-align: center; font-weight: 900">{{ cardData[0].title }}</div>
+    </template>
+    <div class="kbt-row">
     <div
       class="card-nav-box"
       :style="
@@ -9,13 +13,14 @@
           ? 'width: 50%;'
           : 'width: 33.333%;'
       "
-      v-for="item in cardData"
-      :key="item.id"
+      v-for="(item,index) in cardData"
+      :key="index"
     >
       <a :href="item.cardSrc" target="_blank">
         <div class="card-nav-item">
           <div class="card-nav-title">
             <img
+              v-if="item.cardImgSrc && item.cardImgSrc != ''"
               :src="item.cardImgSrc"
               alt="正在加载 ..."
               class="card-nav-img"
@@ -30,6 +35,7 @@
         </div>
       </a>
     </div>
+  </div>
   </div>
 </template>
 
