@@ -79,7 +79,7 @@ export default {
       if (this.lastReading) {
         if (this.$route.path === this.lastReading.path) {
           this.goto();
-        } else {
+        } else{
           this.show = true;
           10000 && setTimeout(this.clean, 10000);
         }

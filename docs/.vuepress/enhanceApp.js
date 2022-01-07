@@ -8,6 +8,87 @@ export default ({
   siteData, // 站点元数据
   isServer // 当前应用配置是处于 服务端渲染 或 客户端
 }) => {
+  /**
+   * 百度 pv 统计，不使用的可以去掉或注释掉
+   */
+  router.beforeEach((to, from, next) => {
+    // 路由切换，触发百度的 pv 统计
+    if (typeof _hmt != "undefined") {
+      if (to.path) {
+        _hmt.push(["_trackPageview", to.path]);
+      }
+    }
+    next();
+  })
+  /**
+   * 私密文章模块
+   */
+  router.beforeEach((to, from, next) => {
+    siteData.pages.forEach((item) => {
+      if (item.path == to.path) {
+        if (item.frontmatter.private && item.frontmatter.private == true) {
+          let { username, password, loginPath, loginKey, expire, loginSession } = siteData.themeConfig.privatePage
+          if (!expire) {
+            expire = 86400000;  // 一天
+          }
+          if (!loginKey) {
+            loginKey = 'vdoing_login';
+          }
+          // 网站关闭或者刷新后，清除登录状态（单个私密文章失效）
+          if (loginSession) {
+            window.addEventListener('unload', function () {
+              localStorage.removeItem(loginKey);
+            });
+          }
+          // 单个文章私密验证
+          if (item.frontmatter.username && item.frontmatter.password) {
+            let loginInfo = JSON.parse(localStorage.getItem(item.frontmatter.title));
+            if (!loginInfo || (loginInfo.username !== item.frontmatter.username && loginInfo.password !== item.frontmatter.password)) {
+              router.push({
+                path: loginPath,
+                query: {
+                  toPath: to.path,
+                  loginKey: item.frontmatter.title,
+                  username: item.frontmatter.username,
+                  password: item.frontmatter.password,
+                  expire: item.frontmatter.expire || expire
+                }
+              });
+            }
+          }
+          // 全局私密验证
+          else {
+            let loginInfo = JSON.parse(localStorage.getItem(loginKey));
+            // 没有登录过
+            if (!loginInfo || (loginInfo.username !== username && loginInfo.password !== password)) {
+              router.push({
+                path: loginPath,
+                query: {
+                  toPath: to.path
+                }
+              });
+            }
+            // 登录状态过期
+            else if (new Date() - loginInfo.time > loginInfo.expire) {
+              localStorage.removeItem(loginKey);
+              router.push({
+                path: loginPath,
+                query: {
+                  toPath: to.path
+                }
+              });
+            }
+          }
+        }
+        return;
+      }
+    });
+    next();
+  })
+
+  /**
+   * 记录最后一次阅读位置模块，方便下次直接跳转
+   */
   // 判断是否绑定时间是否绑定成功
   let isMounted = false;
   // 最后一次阅读位置跳转
@@ -15,7 +96,7 @@ export default ({
   Vue.mixin({
     // 有多少个 Vue 组件（md 文档），就执行多少次 mounted()，所以利用 if 判断只允许执行一次
     mounted() {
-      if (!isMounted) {
+      if (!isMounted && this.$route.path !== '/vdoing/login/') {   // /vdoing/login/ 是我使用的私密文章的 permalink，如果你不使用，就去掉 && 的后面
         window.addEventListener('unload', this.saveLastReading);  // 卸载窗口前，将数据存储，方便下次可以直接跳转位置
         isMounted = true;
       }
@@ -31,15 +112,11 @@ export default ({
     }
   });
 
-  // 站点和文章页信息
+  /**
+   * 站点和文章页信息模块
+   */
   if (!isServer) {
     router.beforeEach((to, from, next) => {
-      // 路由切换，触发百度的 pv 统计
-      if (typeof _hmt != "undefined") {
-        if (to.path) {
-          _hmt.push(["_trackPageview", to.path]);
-        }
-      }
       next();
       if (to.path == '/') {       // 如果页面是首页
         const { indexIteration } = siteData.themeConfig.blogInfo;
@@ -258,7 +335,6 @@ function isMountedView(element, parentElement) {
     return false;
   }
 }
-
 
 /**
  * 加载 js 到 head 标签里

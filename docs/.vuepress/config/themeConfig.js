@@ -63,6 +63,15 @@ module.exports = {
     // 说明：获取一次访问量，访问量 + 1，所以第一次获取失败后，设置的每个隔段重新获取时间，将会影响访问量的次数。如 100 可能每次获取访问量 + 3
   },
 
+  // 私密文章配置
+  privatePage: {
+    username: 'vdoing',    // 用户名
+    password: '123456',    // 密码
+    expire: 1000 * 60 * 60 * 24,   // 有效时间：毫秒(ms)。过期后访问私密文章重新输入用户名和密码。默认一天
+    loginPath: "/vdoing/login/",    // 私密文章 md 的 permalink（必须），建议支持 /vdoing/login/，无默认值
+    loginKey: 'vdoing_login',    // 存储用户名信息的 key，默认是 vdoing_login。系统通过该 key 验证是否登录、是否过期
+    loginSession: false,     // 是否开启在网页关闭或刷新后，清除登录状态，这样再次访问网页，需要重新登录，默认为 false（不开启）
+  },
   author: {
     // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
     name: penName, // 必需

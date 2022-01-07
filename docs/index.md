@@ -1,7 +1,7 @@
 ---
 home: true
 # heroImage: /img/web.png
-heroText: Young Kbt World
+heroText: Young Kbt blog
 tagline: 故事由我书写，旅程由你见证，传奇由她聆听。
 # actionText: 立刻进入 →
 # actionLink: /web/
@@ -31,67 +31,6 @@ postList: detailed
 
 <!-- 网页左下角动态gif 小熊猫挥手 -->
 <!-- <img src="/img/panda-waving.png" class="panda no-zoom" style="width: 130px;height: 115px;opacity: 0.8;margin-bottom: -4px;padding-bottom:0;position: fixed;bottom: 0;left: 0.5rem;z-index: 1;"> -->
-
-
-
-#### Demo演示模块
-   为了更直观的展示一些代码的效果，博客添加了 demo 模块插件，可查看 demo、源码，以及跳转到 codepen 在线编辑。**示例**：
-
-
-::: demo
-```html
-<template>
-  <div class="box-vue">Vue {{ message }}</div>
-</template>
-<script>
-export default {
-  data: () => ({ message: 'Hello World' })
-}
-</script>
-<style>
-.box-vue { color: red; }
-</style>
-```
-:::
-
-::: demo [react]
-```js
-export default class App extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { message: 'Hello World' }
-  }
-  render () {
-    return (
-      <div className="box-react">
-        React {this.state.message}
-      </div>
-    )
-  }
-}
-App.__style__ = `
-  .box-react { color: #621529; }
-`
-```
-:::
-
-::: demo [vanilla]
-```html
-<html>
-  <div id="vanilla-box"></div>
-</html>
-<script>
-  var box = document.getElementById('vanilla-box')
-  box.innerHTML = 'Hello World! Welcome to EB'
-</script>
-<style>
-#vanilla-box {
-  color: #11a8cd;   /* 标题颜色 */
-}
-</style>
-```
-:::
-
 
 
 <ClientOnly>
