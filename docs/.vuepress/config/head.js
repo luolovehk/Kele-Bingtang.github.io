@@ -8,7 +8,7 @@ module.exports = [
   ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3077305_pt8umhrn4k9.css' }], // 阿里在线矢量库
   ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],  // 解决 Chrome 网站统计不准确问题
 
-  ['noscript', {}, '<meta http-equiv="refresh" content="0; url=/vdoing/login/"><style>.theme-vdoing-content { display:none }'],
+  ['noscript', {}, '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }'],
 
   [
     'meta',
