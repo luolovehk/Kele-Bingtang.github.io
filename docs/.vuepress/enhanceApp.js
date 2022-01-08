@@ -27,8 +27,8 @@ export default ({
     router.beforeEach((to, from, next) => {
       siteData.pages.forEach((item) => {
         if (item.path == to.path) {
-          if (item.frontmatter.private && item.frontmatter.private == true) {
-            let { username, password, loginPath, loginKey, expire, loginSession } = siteData.themeConfig.privatePage
+          if (item.frontmatter.private && item.frontmatter.private == true && siteData.themeConfig.privatePage) {
+            let { username, password, loginPath, loginKey, expire, loginSession } = siteData.themeConfig.privatePage;
             if (!expire) {
               expire = 86400000;  // 一天
             }
