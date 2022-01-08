@@ -11,15 +11,15 @@ export default ({
   /**
    * 百度 pv 统计，不使用的可以去掉或注释掉
    */
-  router.beforeEach((to, from, next) => {
-    // 路由切换，触发百度的 pv 统计
-    if (typeof _hmt != "undefined") {
-      if (to.path) {
-        _hmt.push(["_trackPageview", to.path]);
-      }
-    }
-    next();
-  })
+  // router.beforeEach((to, from, next) => {
+  //   // 路由切换，触发百度的 pv 统计
+  //   if (typeof _hmt != "undefined") {
+  //     if (to.path) {
+  //       _hmt.push(["_trackPageview", to.path]);
+  //     }
+  //   }
+  //   next();
+  // })
   /**
    * 私密文章模块
    */

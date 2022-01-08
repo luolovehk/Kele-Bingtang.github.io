@@ -68,7 +68,7 @@ module.exports = {
     username: 'vdoing',    // 用户名
     password: '123456',    // 密码
     expire: 1000 * 60 * 60 * 24,   // 有效时间：毫秒(ms)。过期后访问私密文章重新输入用户名和密码。默认一天
-    loginPath: "/vdoing/login/",    // 私密文章 md 的 permalink（必须），建议支持 /vdoing/login/，无默认值
+    loginPath: "/vdoing/login/",    // 引用登录组件的 md 文章的 permalink（必须），建议支持 /vdoing/login/，无默认值
     loginKey: 'vdoing_login',    // 存储用户名信息的 key，默认是 vdoing_login。系统通过该 key 验证是否登录、是否过期
     loginSession: false,     // 开启是否在网页关闭或刷新后，清除登录状态，这样再次访问网页，需要重新登录，默认为 false（不开启）
   },
