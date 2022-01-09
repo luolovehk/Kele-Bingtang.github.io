@@ -5,7 +5,7 @@ module.exports = [
   // 注入到页面<head> 中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
   ['link', { rel: 'shortcut icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
 
-  ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3077305_pt8umhrn4k9.css' }], // 阿里在线矢量库
+  ['link', { rel: 'stylesheet', href: 'https://at.alicdn.com/t/font_3114978_up0u41z1arr.css' }], // 阿里在线矢量库
   ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],  // 解决 Chrome 网站统计不准确问题
 
   ['noscript', {}, '<meta http-equiv="refresh" content="0; url=https://www.youngkbt.cn/noscript/"><style>.theme-vdoing-content { display:none }'],  // 私密文章模块需要
@@ -23,6 +23,7 @@ module.exports = [
   ['script', { src: 'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' }],
   ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
   ['script', { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' }],
+  ['script', { src: 'https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js' }],
   
   // 百度统计 js
   ['script', {}, baidutj],

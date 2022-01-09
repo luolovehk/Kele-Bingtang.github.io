@@ -113,7 +113,7 @@ export default {
         this.totalWords = Math.round(archivesWords / 100) / 10 + "k";
       } else if (totalWords == "archives") {
         this.totalWords = 0;
-        console.log("如果 totalWords 使用 archives，必须传入 eachFileWords");
+        console.log("如果 totalWords 使用 archives，必须传入 eachFileWords，显然您并没有传入！");
       } else {
         this.totalWords = totalWords;
       }
