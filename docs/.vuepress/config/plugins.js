@@ -150,7 +150,7 @@ module.exports = [
         type: 'playlist',   // 资源类型（播放列表、单曲、专辑等），可选值： "song" | "album" | "artist" | "playlist"
         mid: '2555412439',    // 资源 ID
         // auto: 'https://music.163.com/playlist?id=2555412439',  // 资源 url，填写后可通过资源 url 自动解析资源平台、类型、ID，上述三个选项将被覆盖（本参数仅支持 netease、tencent、xiami 三平台）
-      }, 
+      },
       aplayer: {
         fixed: true,   // 是否开启吸底模式，即自动隐藏在屏幕边框
         mini: true,    // 是否开启迷你模式
@@ -177,22 +177,24 @@ module.exports = [
   [
     'cursor-effects',
     {
-       size: 2, // 粒子的大小，默认值：2
-       shape: ['star'], // 粒子的形状，star：星形，circle：圆形。默认值：star
-       zIndex: 999999999, // 页面的索引属性，默认值：99999999，
+      size: 2, // 粒子的大小，默认值：2
+      shape: ['star'], // 粒子的形状，star：星形，circle：圆形。默认值：star
+      zIndex: 999999999, // 页面的索引属性，默认值：99999999，
     },
- ],
- // 动态标题，官网：https://moefyit.github.io/moefy-vuepress/packages/dynamic-title.html
- [
-  'dynamic-title',
-  {
-     showIcon: '/favicon.ico',
-     showText: 'ヾ(≧▽≦*)o欢迎回来！',
-     hideIcon: '/failure.ico',
-     hideText: 'ಥ_ಥ不要走呀！',
-     recoverTime: 2000,   //  持续时间
-  },
-],
+  ],
+  // 动态标题，官网：https://moefyit.github.io/moefy-vuepress/packages/dynamic-title.html
+  [
+    'dynamic-title',
+    {
+      showIcon: '/favicon.ico',
+      showText: 'ヾ(≧▽≦*)o欢迎回来！',
+      hideIcon: '/failure.ico',
+      hideText: 'ಥ_ಥ不要走呀！',
+      recoverTime: 2000,   //  持续时间
+    },
+  ],
+  // vuepress-plugin-tabs。官网：https://github.com/pskordilakis/vuepress-plugin-tabs
+  ['tabs'],
 ]
 
 
