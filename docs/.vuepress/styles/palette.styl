@@ -100,6 +100,8 @@ strong
       .highlight-lines .highlighted
         &:before
           background-color rgba(0,0,0,.66)
+  div[class*="language-"].line-numbers-mode::after  // 代码块的行数和内容分割线颜色
+    border-right 1px solid rgba(0, 0, 0, 0.66)
    // 下面代码块深色和浅色通用
    // `` 包裹的背景色
   .theme-vdoing-content
@@ -143,6 +145,8 @@ strong
   --codeBg: #1d1d26
   --codeColor: #A9B7C6
   codeThemeDark()
+  div[class*="language-"].line-numbers-mode::after  // 代码块的行数和内容分割线颜色
+    border-right 1px solid rgba(0, 0, 0, 0.66)
   // `` 包裹的背景色
   .theme-vdoing-content
     code

@@ -119,11 +119,7 @@ export default ({
   if (!isServer) {
     router.beforeEach((to, from, next) => {
       next();
-      if (to.path == '/') {       // 如果页面是首页
-        const { indexIteration } = siteData.themeConfig.blogInfo;
-        getIndexViewCouter(indexIteration);
-      }
-      else if (to.path !== '/' && to.path !== from.path) { // // 如果页面是非首页，# 号也会触发路由变化，这里已经排除掉
+      if (to.path !== '/' && to.path !== from.path) {  // 如果页面是非首页，# 号也会触发路由变化，这里已经排除掉
         // 刷新页面或进入新的页面后，如果原来位置的内容还存在，则删除掉，最后重新插入渲染
         removeElement('.page-view-js');
         removeElement('.page-view');
@@ -174,43 +170,7 @@ function removeElement(selector) {
     element.parentNode.removeChild(element);
   }
 }
-/**
- * 首页的统计量
- */
-function getIndexViewCouter(iterationTime = 3000) {
-  if (busuanzi) {
-    busuanzi.fetch();
-  } else {
-    busuanzi = require("busuanzi.pure.js");
-  }
-  var i = 0;
-  var defaultCouter = '9999';
-  // 如果 require 没有获取成功，则手动获取
-  // 但是容易产生访问量叠加，如果只需要第一次获取数据（可能获取失败），可注释掉，此内容是第一次获取失败后，重新获取访问量，可能导致访问量再次 + 1
-  // 取决于访问人的网络，以及 setTimeout 的时间（需求调节）
-  setTimeout(() => {
-    let interval = setInterval(() => {
-      const indexUv = document.querySelector(".web-site-pv");
-      const indexPv = document.querySelector(".web-site-uv");
-      if (indexPv || indexUv) {
-        i += iterationTime;
-        if (i > iterationTime * 10) {
-          indexPv.innerText = defaultCouter;
-          indexUv.innerText = defaultCouter;
-          clearInterval(interval);  // 10 秒后无法获取，则取消获取
-        }
-        if (indexPv.innerText == "" && indexUv.innerText == "") {
-          // 手动获取访问量
-          busuanzi.fetch();
-        } else {
-          clearInterval(interval);
-        }
-      } else {
-        clearInterval(interval);
-      }
-    }, iterationTime);
-  }, iterationTime);
-}
+
 /**
  * 文章页的访问量
  */
@@ -258,7 +218,7 @@ function addPageView() {
   template.style.marginLeft = '20px';
   template.style.fontSize = '0.8rem';
   // template.innerHTML = '<span id="busuanzi_container_page_pv" style="display: none; margin-left: 3px"><a style="color: #888" href="javascript:;" id="busuanzi_value_page_pv" class="view-data"></a></span>';
-  template.innerHTML = '<a style="color: #888; margin-left: 3px" href="javascript:;" id="busuanzi_value_page_pv" class="view-data"><i title="正在获取ing" class="loading iconfont icon-loading"></i></a>';
+  template.innerHTML = '<a style="color: #888; margin-left: 3px" href="javascript:;" id="busuanzi_value_page_pv" class="view-data"><i title="正在获取..." class="loading iconfont icon-loading"></i></a>';
   mountedView(template);
   // 添加 loading 效果
   let style = document.createElement("style");

@@ -76,7 +76,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .kbt-row {
   margin: 0.7rem 0;
   display: flex;

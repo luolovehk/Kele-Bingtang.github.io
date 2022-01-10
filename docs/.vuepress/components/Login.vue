@@ -20,7 +20,7 @@
     </div>
 
     <div class="btn-row">
-      <button class="btn" @click="login" @keyup.enter="login">登录</button>
+      <button class="btn" @click="login">登录</button>
     </div>
   </div>
 </template>
@@ -81,7 +81,7 @@ export default {
         }
       } else if (this.username == "" && this.password != "") {
         addTip("用户名不能为空！", "warning");
-      }else if (this.username != "" && this.password == "") {
+      } else if (this.username != "" && this.password == "") {
         addTip("密码不能为空！", "warning");
       } else {
         addTip("您访问的文章是私密文章，请先输入用户名和密码！", "info");
@@ -89,67 +89,78 @@ export default {
     },
   },
 };
-
-// 添加消息提示
-function addTip(content, type) {
+/**
+ * 添加消息提示
+ * content：内容
+ * type：弹窗类型（tip、success、warning、danger）
+ * startHeight：第一个弹窗的高度，默认 50
+ * dieTime：弹窗消失时间（毫秒），默认 3000 毫秒
+ */
+function addTip(content, type, startHeight = 50, dieTime = 3000) {
+  var tip = document.querySelectorAll(".tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
-  var top =
-    $(".tip:last").attr("data-top") == undefined
-      ? 0
-      : $(".tip:last").attr("data-top");
+  var top = tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-top");
   // 如果产生两个以上的消息提示，则出现在上一个提示的下面，即高度添加，否则默认 50
   var lastTop =
     parseInt(top) +
-    ($(".tip").length > 0 ? $(".tip:last").outerHeight() + 17 : 50);
+    (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
 
-  if (type == "success" || type == 1) {
-    $("body").append(
-      `<div class="tip tip-success ${time}" style="top: ${parseInt(
-        top
-      )}px" data-top="${lastTop}"><i class="iconfont icon-dagouyouquan icon"></i><p class="tip-success-content">${content}</p></div>`
-    );
-  } else if (type == "danger" || type == 2) {
-    $("body").append(
-      `<div class="tip tip-danger ${time}" style="top: ${parseInt(
-        top
-      )}px" data-top="${lastTop}"><i class="iconfont icon-cuowu icon"></i><p class="tip-danger-content">${content}</p></div>`
-    );
-  } else if (type == "info" || type == 3) {
-    $("body").append(
-      `<div class="tip tip-info ${time}" style="top: ${parseInt(
-        top
-      )}px" data-top="${lastTop}"><i class="iconfont icon-info icon"></i><p class="tip-info-content">${content}</p></div>`
-    );
+  let div = document.createElement("div");
+  div.className = `tip tip-${type} ${time}`;
+  div.style.top = parseInt(top) + "px";
+  div.setAttribute("data-top", lastTop);
+  if (type == "info" || type == 1) {
+    div.innerHTML = `<i class="iconfont icon-info icon"></i><p class="tip-info-content">${content}</p>`;
+  } else if (type == "success" || type == 2) {
+    div.innerHTML = `<i class="iconfont icon-dagouyouquan icon"></i><p class="tip-success-content">${content}</p>`;
+  } else if (type == "danger" || type == 3) {
+    div.innerHTML = `<i class="iconfont icon-cuowu icon"></i><p class="tip-danger-content">${content}</p>`;
   } else if (type == "warning" || type == 4) {
-    $("body").append(
-      `<div class="tip tip-warning ${time}" style="top: ${parseInt(
-        top
-      )}px" data-top="${lastTop}"><i class="iconfont icon-gantanhao icon"></i><p class="tip-warning-content">${content}</p></div>`
-    );
+    div.innerHTML = `<i class="iconfont icon-gantanhao icon"></i><p class="tip-warning-content">${content}</p>`;
   }
+  document.body.appendChild(div);
 
-  // 动画往下滑动
-  $("." + time).animate({
-    top: parseInt(lastTop) + "px",
-    opacity: "1",
-  });
-
-  // 消息提示 3 秒后隐藏并被删除
+  let timeTip = document.getElementsByClassName(time)[0];
   setTimeout(() => {
-    $("." + time).animate({
-      top: "0px",
-      opacity: "0",
-    });
+    timeTip.style.top = parseInt(lastTop) + "px";
+    timeTip.style.opacity = "1";
+  }, 10);
 
+  // 消息提示 dieTime 秒后隐藏并被删除
+  setTimeout(() => {
+    timeTip.style.top = "0px";
+    timeTip.style.opacity = "0";
+
+    // 下面的所有元素回到各自曾经的出发点
+    var allTipElement = nextAllTipElement(timeTip);
+    for (let i = 0; i < allTipElement.length; i++) {
+      var next = allTipElement[i];
+      var top = parseInt(next.getAttribute("data-top")) - next.offsetHeight - 17;
+      next.setAttribute("data-top", top);
+      next.style.top = top + "px";
+    }
     setTimeout(() => {
-      $("." + time).remove();
+      timeTip.remove();
     }, 500);
-  }, 3000);
+  }, dieTime);
+}
+/**
+ * 获取后面的兄弟元素
+ */
+function nextAllTipElement(elem) {
+  var r = [];
+  var n = elem;
+  for (; n; n = n.nextSibling) {
+    if (n.nodeType === 1 && n !== elem) {
+      r.push(n);
+    }
+  }
+  return r;
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .login-form {
   padding: 1rem;
   box-sizing: border-box;
