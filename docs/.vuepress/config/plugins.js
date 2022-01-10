@@ -45,7 +45,7 @@ module.exports = [
   //     ],
   //   },
   // ],
-  // 地址：https://github.com/leo-buneev/vuepress-plugin-fulltext-search
+  // 官网：https://github.com/leo-buneev/vuepress-plugin-fulltext-search
   ['fulltext-search'],
 
   [
