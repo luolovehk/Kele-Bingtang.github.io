@@ -47,15 +47,16 @@ export default {
         this.$themeConfig.privatePage;
       if (this.username && this.password) {
         // 某个文章有用户信息，则覆盖全局的信息
-        if (
-          this.$route.query.username &&
-          this.$route.query.password &&
-          this.$route.query.loginKey
-        ) {
-          username = this.$route.query.username;
-          password = this.$route.query.password;
-          loginKey = this.$route.query.loginKey;
-          expire = this.$route.query.expire;
+        if (this.$route.query.singlePage) {
+          this.$filterPosts.forEach((item) => {
+            if (item.path == this.$route.query.toPath) {
+              username = item.frontmatter.username;
+              password = item.frontmatter.password;
+              loginKey = item.frontmatter.title;
+              expire = item.frontmatter.expire || expire;
+              return;
+            }
+          });
         }
         if (this.username == username && this.password == password) {
           const data = JSON.stringify({
@@ -136,7 +137,8 @@ function addTip(content, type, startHeight = 50, dieTime = 3000) {
     var allTipElement = nextAllTipElement(timeTip);
     for (let i = 0; i < allTipElement.length; i++) {
       var next = allTipElement[i];
-      var top = parseInt(next.getAttribute("data-top")) - next.offsetHeight - 17;
+      var top =
+        parseInt(next.getAttribute("data-top")) - next.offsetHeight - 17;
       next.setAttribute("data-top", top);
       next.style.top = top + "px";
     }
@@ -160,7 +162,7 @@ function nextAllTipElement(elem) {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 .login-form {
   padding: 1rem;
   box-sizing: border-box;

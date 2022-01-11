@@ -1,4 +1,5 @@
 import LastReadingPopup from './components/LastReadingPopup.vue'
+import Login from './components/Login.vue'
 let busuanzi;
 
 export default ({
@@ -49,10 +50,7 @@ export default ({
                   path: loginPath,
                   query: {
                     toPath: to.path,
-                    loginKey: item.frontmatter.title,
-                    username: item.frontmatter.username,
-                    password: item.frontmatter.password,
-                    expire: item.frontmatter.expire || expire
+                    singlePage: true,    // 代表单个文章
                   }
                 });
               }
