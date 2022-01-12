@@ -18,7 +18,6 @@ pageComponent: # 使用页面组件
     path:  01.学习笔记/01.前端 # 设置为`docs/`下面的某个文件夹相对路径，如‘01.学习笔记/01.前端’ 或 ’01.学习笔记‘ (有序号的要带序号)
     imgUrl: /img/web.png # 目录页内的图片
     description: JavaScript、ES6、Vue框架等前端技术 # 目录描述（可加入a标签）
-
 title:  # 页面标题
 date:  # 创建日期
 permalink: /note/javascript # 永久链接
@@ -37,7 +36,6 @@ title:     # 页面标题
 date:     # 创建日期
 permalink:  # 永久链接
 categories:  # 所在目录
-
   - 
 tags:    # 所属标签
   - 

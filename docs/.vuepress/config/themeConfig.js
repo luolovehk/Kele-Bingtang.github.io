@@ -73,6 +73,12 @@ module.exports = {
     loginKey: 'vdoing_login',    // 存储用户名信息的 key，默认是 vdoing_login。系统通过该 key 验证是否登录、是否过期
     loginSession: false,     // 开启是否在网页关闭或刷新后，清除登录状态，这样再次访问网页，需要重新登录，默认为 false（不开启）
   },
+  // 首页大图片配置
+  indexImg: {
+    textColor: 2,    // 导航栏左侧名字、中间搜索框、右侧字体颜色，1 是黑色，2 是白色。默认是 1
+    switchColor: true,    // 界面移出大图后，textColor 是否变换，如由白色变黑色，黑色变白色。默认是 false
+    // 因为本主题的默认背景色偏向白色，如果 textColor 是 2，建议需要开启(true)，否则白背景 + 白字体 = 看不见
+  },
   author: {
     // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
     name: penName, // 必需
