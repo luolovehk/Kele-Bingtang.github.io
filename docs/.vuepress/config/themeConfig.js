@@ -24,6 +24,7 @@ module.exports = {
   // archive: false, // 是否打开归档功能，默认true。 如打开，会做的事情有：1.自动生成归档页面（在@pages文件夹）。如关闭，则反之。
   categoryText: '技术随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
 
+  bodyBgImg: 'https://cdn.jsdelivr.net/gh/Weibw162/image-hosting@dev/%E6%9D%82%E5%BD%95/%E4%BC%8A%E8%95%BE%E9%9B%85.5vklmk9v83o0.webp',
   // bodyBgImg: [
   //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175828.jpeg',
   //   'https://cdn.jsdelivr.net/gh/xugaoyi/image_store/blog/20200507175845.jpeg',
