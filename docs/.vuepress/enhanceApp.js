@@ -294,22 +294,3 @@ function isMountedView(element, parentElement) {
     return false;
   }
 }
-
-/**
- * 加载 js 到 head 标签里
- * 目前没有用到
- */
-// function loadJs(jsFileSrc, className, callBack) {
-//   var script = document.createElement("script");
-//   script.className = className;
-//   script.setAttribute("type", "text/javascript");
-//   script.setAttribute("src", jsFileSrc);
-//   document.head.appendChild(script);
-//   script.onload = function () {
-//     setTimeout(() => {
-//       if (typeof callBack == "function") {
-//         callBack();
-//       }
-//     }, 100);
-//   }
-// }

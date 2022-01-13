@@ -24,7 +24,7 @@ pageClass: vdoing-index-class
 #     # link: /technology/
 #     imgUrl: /img/index/other.png
 
-bannerBg: /img/index/bg1.jpg   # 背景图，长度是整个屏幕
+bannerBg: /img/index/bg.jpg   # 背景图，长度是整个屏幕
 
 # 文章列表显示方式: detailed 默认，显示详细版文章列表（包括作者、分类、标签、摘要、分页等）| simple => 显示简约版文章列表（仅标题和日期）| none 不显示文章列表
 postList: detailed
@@ -36,102 +36,292 @@ postList: detailed
 <!-- <img src="/img/panda-waving.png" class="panda no-zoom" style="width: 130px;height: 115px;opacity: 0.8;margin-bottom: -4px;padding-bottom:0;position: fixed;bottom: 0;left: 0.5rem;z-index: 1;"> -->
 
 
-<!-- <ClientOnly>
+<ClientOnly>
   <WebInfo/>
-</ClientOnly> -->
+</ClientOnly>
 
 
 
 
 <script>
 // 两个变量分别是背景元素的 class、生成的箭头 class
-const banner = 'banner';
-const banner_arrow = 'banner-arrow';
+const banner = "banner";
+const banner_arrow = "banner-arrow";
 export default {
-  mounted () {
+  mounted() {
     const arrow = document.getElementById(banner_arrow);
     arrow && arrow.parentNode.removeChild(banner_arrow);
-    let a = document.createElement('a');
+    let a = document.createElement("a");
     a.id = banner_arrow;
     a.className = banner_arrow;
     document.getElementsByClassName(banner)[0].append(a);
     let targetA = document.getElementById(banner_arrow);
-    targetA.addEventListener('click', e => { // 添加点击事件
+    targetA.addEventListener("click", (e) => {
+      // 添加点击事件
       this.scrollFn();
     });
-    let textColor = 1;  // 导航栏字体颜色，为了方便，请在 themeConfig 进行配置，不建议修改此处
-    let switchColor = true;  // 离开图片是否切换颜色，为了方便，请在 themeConfig 进行配置，不建议修改此处
-    if(this.$themeConfig.indexImg && Object.keys(this.$themeConfig.indexImg).length > 0){
-      textColor = this.$themeConfig.indexImg.textColor == undefined ? 1 : this.$themeConfig.indexImg.textColor;
-      switchColor = this.$themeConfig.indexImg.switchColor == undefined ? true : this.$themeConfig.indexImg.switchColor;
+    // 这里是这几个属性的默认值，建议在 themeConfig 进行配置，它们将覆盖这几个属性值
+    let navColor = 1; 
+    let switchNavColor = false;
+    let bgTimeColor = false;
+    let bgTimeColorArray = ['transparent', 'rgba(255, 148, 48, .2', 'rgba(0, 0, 0, .3)', 'rgba(0, 0, 0, .5)'];
+    let descFadeIn = false;
+    let descFadeInTime = 200;
+    let bubble = false;
+    let bubblePosition = 40;
+    if (
+      this.$themeConfig.indexImg &&
+      Object.keys(this.$themeConfig.indexImg).length > 0
+    ) {
+      navColor =
+        this.$themeConfig.indexImg.navColor == undefined
+          ? navColor
+          : this.$themeConfig.indexImg.navColor;
+      switchNavColor =
+        this.$themeConfig.indexImg.switchNavColor == undefined
+          ? switchNavColor
+          : this.$themeConfig.indexImg.switchNavColor;
+      bgTimeColor =
+        this.$themeConfig.indexImg.bgTimeColor == undefined
+          ? bgTimeColor
+          : this.$themeConfig.indexImg.bgTimeColor;
+      bgTimeColorArray =
+        this.$themeConfig.indexImg.bgTimeColorArray == undefined
+          ? bgTimeColorArray
+          : this.$themeConfig.indexImg.bgTimeColorArray;
+      descFadeIn =
+        this.$themeConfig.indexImg.descFadeIn == undefined
+          ? descFadeIn
+          : this.$themeConfig.indexImg.descFadeIn;
+      descFadeInTime =
+        this.$themeConfig.indexImg.descFadeInTime == undefined
+          ? descFadeInTime
+          : this.$themeConfig.indexImg.descFadeInTime;
+      bubble =
+        this.$themeConfig.indexImg.bubble == undefined
+          ? bubble
+          : this.$themeConfig.indexImg.bubble;
+      bubblePosition =
+        this.$themeConfig.indexImg.bubblePosition == undefined
+          ? bubblePosition
+          : this.$themeConfig.indexImg.bubblePosition;
     }
     // 初始化
+    if(bgTimeColor){
+      this.bgTimeColor(bgTimeColorArray);
+    }
     this.noBgBlur();
-    this.blurText(textColor);
-    this.watchScroll(textColor, switchColor);
+    this.blurText(navColor);
+    this.watchScroll(navColor, switchNavColor);
+
+    if (descFadeIn) {
+      this.textFadeIn(descFadeInTime);
+    }
+    if (bubble) {
+      let canvas = document.createElement("canvas");
+      canvas.id = "canvas";
+      canvas.style.top = bubblePosition + "%";
+      document.getElementsByClassName(banner)[0].append(canvas);
+      this.canvasBubble();
+    }
   },
   methods: {
     scrollFn() {
       const windowH = document.getElementsByClassName(banner)[0].clientHeight; // 获取窗口高度
       window.scrollTo({
         top: windowH,
-        behavior: 'smooth'   // 平滑滚动
-      })
+        behavior: "smooth", // 平滑滚动
+      });
     },
     // 监听页面滚动的回调
-    watchScroll(textColor, switchColor){
+    watchScroll(navColor, switchNavColor) {
       const windowH = document.getElementsByClassName(banner)[0].clientHeight; // 获取窗口高度
       window.onscroll = () => {
-        if(document.documentElement.scrollTop < windowH){
-          this.blurText(textColor);
+        if (document.documentElement.scrollTop < windowH) {
+          this.blurText(navColor);
           this.noBgBlur();
-        }else{
-          if(switchColor && textColor == 1){
+        } else {
+          if (switchNavColor && navColor == 1) {
             this.blurText(2);
-          }else if(switchColor && textColor == 2){
+          } else if (switchNavColor && navColor == 2) {
             this.blurText(1);
           }
           this.bgBlur();
         }
-      }
+      };
     },
     // 导航栏不透明
-    bgBlur(){
-      let navbar = document.getElementsByClassName('navbar')[0];
+    bgBlur() {
+      let navbar = document.getElementsByClassName("navbar")[0];
       navbar.className = "navbar navbar1 blur";
     },
     // 导航栏透明
     noBgBlur() {
-      let navbar = document.getElementsByClassName('navbar')[0];
+      let navbar = document.getElementsByClassName("navbar")[0];
       navbar.className = "navbar navbar2 blur";
     },
     // 导航栏的字体颜色
-    blurText(textColor){
-      let title = document.getElementsByClassName('site-name')[0];
-      let search = document.getElementsByClassName('search-box')[0];
-      let nav = document.getElementsByClassName('nav-links')[0];
-      if(textColor == 1){
+    blurText(navColor) {
+      let title = document.getElementsByClassName("site-name")[0];
+      let search = document.getElementsByClassName("search-box")[0];
+      let nav = document.getElementsByClassName("nav-links")[0];
+      if (navColor == 1) {
         title.className = "site-name site-name1 can-hide";
         nav.className = "nav-links nav-links1 can-hide";
         search.className = "search-box search-box1";
-      }else if(textColor == 2){
+      } else if (navColor == 2) {
         title.className = "site-name site-name2 can-hide";
         nav.className = "nav-links nav-links2 can-hide";
         search.className = "search-box search-box2";
       }
     },
-  }
-}
+    // 背景色随时间变化
+    bgTimeColor(bgTimeColorArray){
+      var time = new Date().getHours(); 
+      let div = document.createElement("div");
+      div.className = "banner-color";
+      if(time >= 6 && time < 16){
+        div.style.backgroundColor = bgTimeColorArray[0];
+      } else if(time >= 16 && time <= 19){
+        div.style.backgroundColor = bgTimeColorArray[1];
+      } else if(time >= 19 && time < 24){
+        div.style.backgroundColor = bgTimeColorArray[2];
+      } else if(time>=0 && time < 6){
+        div.style.backgroundColor = bgTimeColorArray[3];
+      }
+      document.getElementsByClassName(banner)[0].parentNode.append(div);
+    },
+    // 字体淡入
+    textFadeIn(descFadeInTime) {
+      let index = 0;
+      let description =
+        document.getElementsByClassName("description")[0].innerText;
+      document.getElementsByClassName("description")[0].innerText = "";
+      function fadeIn() {
+        if (document.getElementsByClassName("description")[0]) {
+          document.getElementsByClassName("description")[0].innerText =
+            description.substring(0, index++);
+          if (index > description.length) {
+            clearInterval(interval);
+          }
+        }
+      }
+      let interval = setInterval(fadeIn, descFadeInTime);
+    },
+    // 气泡效果
+    canvasBubble() {
+      var canvas = document.getElementById("canvas");
+      var cxt = canvas.getContext("2d");
+      function Dot() {
+        this.alive = true;
+        this.x = Math.round(Math.random() * canvas.width);
+        this.y = Math.round(Math.random() * canvas.height);
+        this.diameter = Math.random() * 10.8;
+        this.ColorData = {
+          Red: Math.round(Math.random() * 255),
+          Green: Math.round(Math.random() * 255),
+          Blue: Math.round(Math.random() * 255),
+        };
+        this.alpha = 0.1;
+        this.color =
+          "rgba(" +
+          this.ColorData.Red +
+          ", " +
+          this.ColorData.Green +
+          "," +
+          this.ColorData.Blue +
+          "," +
+          this.alpha +
+          ")";
+        this.velocity = {
+          x: Math.round(Math.random() < 0.5 ? -1 : 1) * Math.random() * 0.7,
+          y: Math.round(Math.random() < 0.5 ? -1 : 1) * Math.random() * 0.7,
+        };
+      }
+      Dot.prototype = {
+        Draw: function () {
+          cxt.fillStyle = this.color;
+          cxt.beginPath();
+          cxt.arc(this.x, this.y, this.diameter, 0, Math.PI * 2, false);
+          cxt.fill();
+        },
+        Update: function () {
+          if (this.alpha < 0.8) {
+            this.alpha += 0.01;
+            this.color =
+              "rgba(" +
+              this.ColorData.Red +
+              ", " +
+              this.ColorData.Green +
+              "," +
+              this.ColorData.Blue +
+              "," +
+              this.alpha +
+              ")";
+          }
+          this.x += this.velocity.x;
+          this.y += this.velocity.y;
+          if (
+            this.x > canvas.width + 5 ||
+            this.x < 0 - 5 ||
+            this.y > canvas.height + 5 ||
+            this.y < 0 - 5
+          ) {
+            this.alive = false;
+          }
+        },
+      };
+      var Event = {
+        rArray: [],
+        Init: function () {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          for (var x = 0; x < 150; x++) {
+            this.rArray.push(new Dot());
+          }
+          this.Update();
+        },
+        Draw: function () {
+          cxt.clearRect(0, 0, canvas.width, canvas.height);
+          this.rArray.forEach(function (dot) {
+            dot.Draw();
+          });
+        },
+        Update: function () {
+          if (Event.rArray.length < 150) {
+            for (var x = Event.rArray.length; x < 150; x++) {
+              Event.rArray.push(new Dot());
+            }
+          }
+          Event.rArray.forEach(function (dot) {
+            dot.Update();
+          });
+          Event.rArray = Event.rArray.filter(function (dot) {
+            return dot.alive;
+          });
+          Event.Draw();
+          requestAnimationFrame(Event.Update);
+        },
+      };
+      window.onresize = function () {
+        Event.rArray = [];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      Event.Init();
+    },
+  },
+};
 </script>
 <style>
 /* 图片大小 */
-.home-wrapper .banner{
+.vdoing-index-class .home-wrapper .banner{
   margin-top: 0 !important;
   height: 100vh;
 }
 /* 图片中间的签名和标题位置 */
 .banner-conent{
-  margin-top: 10vh !important;
+  margin-top: 20vh !important;
 }
 /* 下面是配合 js 用的 class 样式 */
 .vdoing-index-class .navbar1{
@@ -185,7 +375,7 @@ export default {
   bottom: 15%;
   margin-left: -10px;
   cursor: pointer;
-  z-index: 99;
+  z-index: 999;
 }
 @-webkit-keyframes bounce-in{
   0%{transform:translateY(0)}
@@ -213,5 +403,20 @@ export default {
   border-right: 3px solid #fff;
   border-top: 3px solid #fff;
   transform: rotate(135deg);
+}
+/* 随时间变化的背景色元素 */
+.vdoing-index-class .banner-color{
+  width: 100%;
+  min-height: 450px;
+  overflow: hidden;
+  margin-top: 0;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+}
+/* 气泡效果的画布元素 */
+#canvas{
+  position: absolute;
+  top: 0;
 }
 </style>

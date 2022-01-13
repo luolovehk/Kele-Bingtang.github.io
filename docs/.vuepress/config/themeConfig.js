@@ -75,9 +75,15 @@ module.exports = {
   },
   // 首页大图片配置
   indexImg: {
-    textColor: 2,    // 导航栏左侧名字、中间搜索框、右侧字体颜色，1 是黑色，2 是白色。默认是 1
-    switchColor: true,    // 界面移出大图后，textColor 是否变换，如由白色变黑色，黑色变白色。默认是 false
-    // 因为本主题的默认背景色偏向白色，如果 textColor 是 2，建议需要开启(true)，否则白背景 + 白字体 = 看不见
+    navColor: 2,    // 导航栏左侧名字、中间搜索框、右侧字体颜色，1 是黑色，2 是白色。默认是 1
+    switchNavColor: true,    // 页面移出大图片的位置后，navColor 是否变换，如由白色变黑色，黑色变白色。默认是 false
+    // 因为本主题的默认背景色偏向白色，如果 navColor 是 2，建议需要开启(true)，否则白背景 + 白字体 = 看不见
+    bgTimeColor: true,     // 是否开启图片的背景色随一天的不同时间而变化，默认是 false。时间分为四种：白天（原图）、黄昏（偏黄）、晚上（偏黑）、深夜（偏深黑）
+    bgTimeColorArray: ['transparent', 'rgba(255, 148, 48, .2', 'rgba(0, 0, 0, .3)', 'rgba(0, 0, 0, .5)'],   // 第一个是白天的颜色（默认原图），第二个是黄昏的颜色，第三个是晚上的颜色，第四个是深夜的颜色。bgTimeColor 为 true 生效
+    descFadeIn: true,   // 是否开启图片中间描述的淡入效果，默认为 false
+    descFadeInTime: 200,  // 图片中间描述的淡入效果持续时间，descFadeIn 为 true 生效，默认 200 毫秒
+    bubble: true,    // 是否开启图片的气泡效果，默认为 false
+    bubblePosition: 0,  // 气泡效果的位置，范围：0-100，不同数值代表不同的起始位置，0是整个图片，50是半张图（一半的下方）。bubble 为 true 生效。默认是 0
   },
   author: {
     // 文章默认的作者信息，可在md文件中单独配置此信息 String | {name: String, link: String}
