@@ -274,36 +274,4 @@ div.v-dialog-overlay {
   line-height: 21px;
   font-size: 14px;
 }
-
-.social-tip {
-  margin-bottom: 170px;
-  display: none;
-}
-
-.square {
-  width: 0;
-  height: 0;
-  border-bottom: 7px solid rgba(118, 25, 172, 0.3);
-  border-right: 7px solid transparent;
-  border-left: 7px solid transparent;
-  position: relative;
-  left: 36%;
-  /* display: none; */
-}
-
-.social-info {
-  width: 200px;
-  position: absolute;
-  line-height: 48px;
-  left: -95%;
-  margin-left: -40px;
-  background-color: rgba(118, 25, 172, 0.3);
-  color: #fff;
-  padding: 0 15px 15px;
-}
-
-.social-info img {
-  width: 160px;
-  height: 160px;
-}
 </style>
