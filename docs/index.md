@@ -39,8 +39,6 @@ postList: detailed
 <ClientOnly>
   <WebInfo />
   <IndexBigImg />
+  <Fantasy />
 </ClientOnly>
-
-
-
 

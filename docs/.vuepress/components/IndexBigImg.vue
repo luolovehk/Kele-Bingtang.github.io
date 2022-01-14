@@ -27,7 +27,11 @@ export default {
       "rgba(0, 0, 0, .5)",
     ];
     let descFadeIn = false;
+    let desc = [];
     let descFadeInTime = 200;
+    let descFadeOutTime = 100;
+    let descNextTime = 800;
+    let descFontSize = "1.4rem";
     let bubble = false;
     let bubblePosition = 0;
     let bubbleNum = 200;
@@ -55,10 +59,23 @@ export default {
         this.$themeConfig.indexImg.descFadeIn == undefined
           ? descFadeIn
           : this.$themeConfig.indexImg.descFadeIn;
+      desc =
+        this.$themeConfig.indexImg.desc == undefined
+          ? desc
+          : this.$themeConfig.indexImg.desc;
+      descFontSize =
+        this.$themeConfig.indexImg.descFontSize == undefined
+          ? descFontSize
+          : this.$themeConfig.indexImg.descFontSize;
       descFadeInTime =
         this.$themeConfig.indexImg.descFadeInTime == undefined
           ? descFadeInTime
           : this.$themeConfig.indexImg.descFadeInTime;
+      descNextTime =
+        this.$themeConfig.indexImg.descNextTime == undefined
+          ? descNextTime
+          : this.$themeConfig.indexImg.descNextTime;
+
       bubble =
         this.$themeConfig.indexImg.bubble == undefined
           ? bubble
@@ -83,7 +100,13 @@ export default {
     this.watchScroll(navColor, switchNavColor);
 
     if (descFadeIn) {
-      this.textFadeIn(descFadeInTime);
+      this.textFadeInAndOut(
+        desc,
+        descFontSize,
+        descFadeInTime,
+        descFadeOutTime,
+        descNextTime
+      );
     }
     if (bubble) {
       let canvas = document.createElement("canvas");
@@ -93,6 +116,15 @@ export default {
       this.canvasBubble(bubbleNum);
     }
   },
+  watch: {
+    $route(to, from) {
+      if (to.path == "/" && Object.keys(this.$route.query).length > 0) {
+        setTimeout(() => {
+          this.clickArrow();
+        }, 200);
+      }
+    },
+  },
   methods: {
     scrollFn() {
       const windowH = document.getElementsByClassName(banner)[0].clientHeight; // 获取窗口高度
@@ -100,6 +132,10 @@ export default {
         top: windowH,
         behavior: "smooth", // 平滑滚动
       });
+    },
+    clickArrow(){
+      const arrow = document.getElementById('banner-arrow');
+      arrow.click();
     },
     // 监听页面滚动的回调
     watchScroll(navColor, switchNavColor) {
@@ -148,45 +184,114 @@ export default {
       var hours = new Date().getHours();
       var minutes = new Date().getMinutes();
       var seconds = new Date().getSeconds();
-      hours = hours < 10 ? '0' + hours : hours;
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      seconds = seconds < 10 ? '0' + seconds : seconds;
+      hours = hours < 10 ? "0" + hours : hours;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
       let div = document.createElement("div");
       div.className = "banner-color";
       if (hours >= 6 && hours < 11) {
         div.style.backgroundColor = bgTimeColorArray[0];
-        addTip(`早上好呀~~，现在是 ${hours}:${minutes}:${seconds}，吃早餐了吗？😊🤭`, "info", 50, 4000);
+        addTip(
+          `早上好呀~~，现在是 ${hours}:${minutes}:${seconds}，吃早餐了吗？😊🤭`,
+          "info",
+          50,
+          4000
+        );
       } else if (hours >= 12 && hours <= 17) {
-        div.style.backgroundColor = bgTimeColorArray[1];
-        addTip(`下午好呀~~，现在是 ${hours}:${minutes}:${seconds}，繁忙的下午也要适当休息哦🥤🏀~~`, "info", 50, 4000);
+        div.style.backgroundColor = bgTimeColorArray[0];
+        addTip(
+          `下午好呀~~，现在是 ${hours}:${minutes}:${seconds}，繁忙的下午也要适当休息哦🥤🏀~~`,
+          "info",
+          50,
+          4000
+        );
       } else if (hours >= 17 && hours <= 19) {
         div.style.backgroundColor = bgTimeColorArray[1];
-        addTip(`到黄昏了~~，现在是 ${hours}:${minutes}:${seconds}，该准备吃饭啦🥗🍖~~`, "info", 50, 4000);
+        addTip(
+          `到黄昏了~~，现在是 ${hours}:${minutes}:${seconds}，该准备吃饭啦🥗🍖~~`,
+          "info",
+          50,
+          4000
+        );
       } else if (hours >= 19 && hours < 24) {
         div.style.backgroundColor = bgTimeColorArray[2];
-        addTip(`晚上好呀~~，现在是 ${hours}:${minutes}:${seconds}，该准备洗漱睡觉啦🥱😪~~`, "info", 50, 4000);
+        addTip(
+          `晚上好呀~~，现在是 ${hours}:${minutes}:${seconds}，该准备洗漱睡觉啦🥱😪~~`,
+          "info",
+          50,
+          4000
+        );
       } else if (hours >= 0 && hours < 6) {
         div.style.backgroundColor = bgTimeColorArray[3];
-        addTip(`别再熬夜了~~，早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`, "info", 50, 4000);
+        addTip(
+          `别再熬夜了~~，早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`,
+          "info",
+          50,
+          4000
+        );
       }
       document.getElementsByClassName(banner)[0].parentNode.append(div);
     },
     // 字体淡入
-    textFadeIn(descFadeInTime) {
-      let index = 0;
-      let description =
-        document.getElementsByClassName("description")[0].innerText;
-      document.getElementsByClassName("description")[0].innerText = "";
+    textFadeInAndOut(
+      desc,
+      descFontSize,
+      descFadeInTime,
+      descFadeOutTime,
+      descNextTime
+    ) {
+      let descElement = document.getElementsByClassName("description")[0];
+      descElement.style.fontSize = descFontSize;
+      if (descElement) {
+        // 非首页不触发
+        var span = document.createElement("span"); // 创建 | 的元素
+        span.className = "typed";
+        span.innerHTML = "|";
+        var index = 0; // 为 desc 的长度服务
+        var length = 0; // 为数组服务
+        var description = descElement.innerText; // 先取默认值
+        descElement.innerText = ""; // 清空 desc
+        descElement.appendChild(document.createElement("span")); // 创建 desc 所在的新元素
+        descElement.appendChild(span); // 添加 | 的元素
+        // 初始化迭代
+        var interval1 = setInterval(fadeIn, descFadeInTime);
+        var interval2;
+      }
+      // 淡入回调
       function fadeIn() {
-        if (document.getElementsByClassName("description")[0]) {
-          document.getElementsByClassName("description")[0].innerText =
-            description.substring(0, index++);
+        if (descElement) {
+          span.style.animation = "none"; // 淡入时，| 光标不允许闪烁
+          if (desc instanceof Array && desc.length > 0) {
+            // 如果是 themeConfig 传来的数组
+            description = desc[length];
+          }
+          descElement.firstChild.innerText = description.substring(0, index++);
           if (index > description.length) {
-            clearInterval(interval);
+            clearInterval(interval1);
+            span.style.animation = "typedBlink 1s infinite"; // 淡入结束，| 光标允许闪烁
+            setTimeout(() => {
+              interval2 = setInterval(fadeOut, descFadeOutTime);
+            }, descNextTime);
           }
         }
       }
-      let interval = setInterval(fadeIn, descFadeInTime);
+      // 淡出回调
+      function fadeOut() {
+        if (index >= 0) {
+          span.style.animation = "none"; // 淡出时，| 光标不允许闪烁
+          descElement.firstChild.innerText = description.substring(0, index--);
+        } else {
+          clearInterval(interval2);
+          span.style.animation = "typedBlink 1s infinite"; // 淡出结束，| 光标允许闪烁
+          setTimeout(() => {
+            length++;
+            if (length >= desc.length) {
+              length = 0; // desc 展示完，重新开始计数
+            }
+            interval1 = setInterval(fadeIn, descFadeInTime);
+          }, descNextTime);
+        }
+      }
     },
     // 气泡效果
     canvasBubble(bubbleNum) {
@@ -299,7 +404,7 @@ export default {
  * startHeight：第一个弹窗的高度，默认 50
  * dieTime：弹窗消失时间（毫秒），默认 3000 毫秒
  */
- function addTip(content, type, startHeight = 50, dieTime = 3000) {
+function addTip(content, type, startHeight = 50, dieTime = 3000) {
   var tip = document.querySelectorAll(".tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
@@ -352,7 +457,7 @@ export default {
 /**
  * 获取后面的兄弟元素
  */
- function nextAllTipElement(elem) {
+function nextAllTipElement(elem) {
   var r = [];
   var n = elem;
   for (; n; n = n.nextSibling) {
@@ -368,15 +473,17 @@ export default {
 /* 如果全屏背景图，则下调衔接到大图的下面 */
 .body-bg {
   top: 6vh;
+  /* position: absolute; */
 }
 /* 图片大小 */
 .vdoing-index-class .home-wrapper .banner {
   margin-top: 0 !important;
   height: 100vh;
+  background-attachment: fixed !important;
 }
 /* 图片中间的签名和标题位置 */
 .banner-conent {
-  margin-top: 20vh !important;
+  margin-top: 23vh !important;
 }
 /* 下面是配合 js 用的 class 样式 */
 .vdoing-index-class .navbar1 {
@@ -450,6 +557,13 @@ export default {
   border-top: 3px solid #fff;
   transform: rotate(135deg);
 }
+/* 描述淡入淡出元素 */
+.description {
+  display: inline-block;
+}
+.typed {
+  opacity: 1;
+}
 /* 随时间变化的背景色元素 */
 .vdoing-index-class .banner-color {
   width: 100%;
@@ -464,6 +578,10 @@ export default {
 #canvas {
   position: absolute;
   top: 0;
+}
+/* 切换第二页，继续打开 banner */
+.hide-banner {
+  display: block !important;
 }
 /* 提示框元素 */
 .tip {
@@ -534,5 +652,13 @@ export default {
   color: #e6a23c;
   line-height: 21px;
   font-size: 14px;
+}
+@keyframes typedBlink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style>
