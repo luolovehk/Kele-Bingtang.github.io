@@ -133,6 +133,7 @@ export default {
         behavior: "smooth", // 平滑滚动
       });
     },
+    // 触发下拉按钮
     clickArrow() {
       const arrow = document.getElementById("banner-arrow");
       arrow.click();
@@ -240,7 +241,6 @@ export default {
       descFadeOutTime,
       descNextTime
     ) {
-      desc = ["Web前端技术博客，积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu", "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt", "这一生波澜壮阔或是不惊都没问题 —— 来自 Weibw"];
       let descElement = document.getElementsByClassName("description")[0];
       descElement.style.fontSize = descFontSize;
       if (descElement) {
