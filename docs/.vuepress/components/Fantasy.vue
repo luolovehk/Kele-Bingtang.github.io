@@ -10,10 +10,6 @@
 <script>
 export default {
   mounted() {
-    // let div = document.createElement("div");
-    // div.className = "fanctasy";
-    // div.style.backgroundImage = "url('/fantasy/bg.png')";
-    // document.getElementsByClassName("banner")[0].append(div);
     // 如果使用 IndexBigImg.vue，则去掉该组件提供的时间罩
     this.clearBannerColor();
     this.mountedElement();

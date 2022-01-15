@@ -133,8 +133,8 @@ export default {
         behavior: "smooth", // 平滑滚动
       });
     },
-    clickArrow(){
-      const arrow = document.getElementById('banner-arrow');
+    clickArrow() {
+      const arrow = document.getElementById("banner-arrow");
       arrow.click();
     },
     // 监听页面滚动的回调
@@ -197,7 +197,7 @@ export default {
           50,
           4000
         );
-      } else if (hours >= 12 && hours <= 17) {
+      } else if (hours >= 12 && hours <= 16) {
         div.style.backgroundColor = bgTimeColorArray[0];
         addTip(
           `下午好呀~~，现在是 ${hours}:${minutes}:${seconds}，繁忙的下午也要适当休息哦🥤🏀~~`,
@@ -205,7 +205,7 @@ export default {
           50,
           4000
         );
-      } else if (hours >= 17 && hours <= 19) {
+      } else if (hours >= 16 && hours <= 19) {
         div.style.backgroundColor = bgTimeColorArray[1];
         addTip(
           `到黄昏了~~，现在是 ${hours}:${minutes}:${seconds}，该准备吃饭啦🥗🍖~~`,
@@ -224,7 +224,7 @@ export default {
       } else if (hours >= 0 && hours < 6) {
         div.style.backgroundColor = bgTimeColorArray[3];
         addTip(
-          `别再熬夜了~~，早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`,
+          `别再熬夜了~~，现在是 ${hours}:${minutes}:${seconds}，早点睡吧，让我们一起欣赏早上的太阳~~😇🛏`,
           "info",
           50,
           4000
@@ -470,11 +470,6 @@ function nextAllTipElement(elem) {
 </script>
 
 <style>
-/* 如果全屏背景图，则下调衔接到大图的下面 */
-.body-bg {
-  top: 6vh;
-  /* position: absolute; */
-}
 /* 图片大小 */
 .vdoing-index-class .home-wrapper .banner {
   margin-top: 0 !important;

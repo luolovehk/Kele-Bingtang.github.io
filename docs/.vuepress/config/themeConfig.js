@@ -82,12 +82,12 @@ module.exports = {
     bgTimeColor: true,     // 是否开启图片的背景色随一天的不同时间而变化，默认是 false。时间分为四种：白天（原图）、黄昏（偏黄）、晚上（偏黑）、深夜（偏深黑）
     bgTimeColorArray: ['transparent', 'rgba(255, 148, 48, .2', 'rgba(0, 0, 0, .3)', 'rgba(0, 0, 0, .5)'],   // 第一个是白天的颜色（默认原图），第二个是黄昏的颜色，第三个是晚上的颜色，第四个是深夜的颜色。bgTimeColor 为 true 生效
     descFadeIn: true,   // 是否开启图片中间描述的淡入效果，默认为 false
-    desc: ["Web前端技术博客，积跬步以至千里，致敬每个爱学习的你", "故事由我书写，旅程由你见证，传奇由她聆听", "这一生波澜壮阔或是不惊都没问题"],  // 多条描述，如果填写则覆盖 index.md 的 tagline，不填写则默认读取 index.md 的 tagline，descFadeIn 为 true 生效
+    desc: ["后端技术博客，积跬步以至千里，致敬每个爱学习的你", "故事由我书写，旅程由你见证，传奇由她聆听", "这一生波澜壮阔或是不惊都没问题"],  // 多条描述，如果填写则覆盖 index.md 的 tagline，不填写则默认读取 index.md 的 tagline，descFadeIn 为 true 生效
     descFontSize: '1.4rem',   // desc 的字体大小，默认 1.4rem。提示：原主题是 1.1rem
     descFadeInTime: 200,  // 描述的淡入效果持续时间，descFadeIn 为 true 生效，默认 200 毫秒
     descFadeOutTime: 100,  // 描述的淡出效果持续时间，descFadeIn 为 true 生效，默认 100 毫秒
     descNextTime: 800,  // 当有多个 desc 时，一个 desc 展示完后或准备开始时，多少时间后出现下一个 desc，默认 800 毫秒
-    bubble: true,    // 是否开启图片的气泡效果，默认为 false
+    bubble: false,    // 是否开启图片的气泡效果，默认为 false
     bubblePosition: 0,  // 气泡效果的位置，范围：0-100，不同数值代表不同的起始位置，0是整个图片，50是半张图（一半的下方）。bubble 为 true 生效。默认是 0
     bubbleNum: 200,   // 气泡的个数，bubble 为 true 生效，默认 200 个
   },
