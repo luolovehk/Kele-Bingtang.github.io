@@ -232,7 +232,7 @@ export default {
       }
       document.getElementsByClassName(banner)[0].parentNode.append(div);
     },
-    // 字体淡入
+    // 字体淡入淡出
     textFadeInAndOut(
       desc,
       descFontSize,
@@ -240,6 +240,7 @@ export default {
       descFadeOutTime,
       descNextTime
     ) {
+      desc = ["Web前端技术博客，积跬步以至千里，致敬每个爱学习的你 —— 来自 Evan Xu", "故事由我书写，旅程由你见证，传奇由她聆听 —— 来自 Young Kbt", "这一生波澜壮阔或是不惊都没问题 —— 来自 Weibw"];
       let descElement = document.getElementsByClassName("description")[0];
       descElement.style.fontSize = descFontSize;
       if (descElement) {
@@ -493,6 +494,10 @@ function nextAllTipElement(elem) {
   .vdoing-index-class .nav-links1 .dropdown-title > .link-title,  /* 能跳转的一级导航 */
   .vdoing-index-class .site-name1  /* 左侧的名字 */ {
   color: #fff !important;
+}
+/* 页脚的颜色 */
+.vdoing-index-class .footer {
+  color: #fff;
 }
 .vdoing-index-class .search-box1 input {
   border-color: #fff;

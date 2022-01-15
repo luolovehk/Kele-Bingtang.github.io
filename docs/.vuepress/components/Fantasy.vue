@@ -604,6 +604,7 @@ export default {
   top: 0;
   height: 100vh;
   width: 100%;
+  z-index: -9;
 }
 .hidden {
   display: none;
