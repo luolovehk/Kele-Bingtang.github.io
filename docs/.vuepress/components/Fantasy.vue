@@ -273,7 +273,7 @@ export default {
         display.width = window.innerWidth;
         if (window.innerWidth / window.innerHeight > 1.8333333333333) {
           display.height = (window.innerWidth / 1980) * 1080;
-          window.scrollTo(0, (window.innerHeight - 123) / 16);
+          // window.scrollTo(0, (window.innerHeight - 123) / 16);
         } else {
           display.height = window.innerHeight;
         }

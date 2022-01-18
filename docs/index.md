@@ -42,3 +42,70 @@ postList: detailed
   <Fantasy />
 </ClientOnly>
 
+
+<script>
+
+export default {
+  mounted() {
+    // 监听滚动
+    window.addEventListener('scroll', () => {
+      const banner = document.getElementsByClassName('banner')[0];
+      if(banner){
+        if(document.documentElement.scrollTop <= 0){
+          this.fullScreen();
+        }else{
+          this.exitScreen();
+        }
+      this.fullScreen();
+      }
+   });
+  },
+  watch: {
+    $route(to, from) {
+      if (to.path == "/" && Object.keys(this.$route.query).length == 0) {
+       // 监听滚动
+        window.addEventListener('scroll', () => {
+          if(document.documentElement.scrollTop <= 0){
+            this.fullScreen();
+          }else{
+            this.exitScreen();
+          }
+        });
+        this.fullScreen();
+      }
+    },
+  },
+  methods: {
+    // 进入全屏
+    fullScreen() {
+      var el = document.documentElement;
+      var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullScreen;
+      if (rfs) {
+        rfs.call(el);
+      } else if (typeof window.ActiveXObject !== "undefined") {
+        // for IE，这里其实就是模拟了按下键盘的 F11，使浏览器全屏
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript != null) {
+          wscript.SendKeys("{F11}");
+        }
+      }
+    },
+    // 退出全屏
+    exitScreen() {
+      var el = document;
+      var cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen;
+      if (cfs) {
+        cfs.call(el);
+      } else if (typeof window.ActiveXObject !== "undefined") {
+        // for IE，这里和 fullScreen 相同，模拟按下 F11 键退出全屏
+        var wscript = new ActiveXObject("WScript.Shell");
+        if (wscript != null) {
+          wscript.SendKeys("{F11}");
+        }
+      }
+    }
+  },
+}
+
+
+</script>

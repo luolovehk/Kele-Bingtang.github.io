@@ -6,7 +6,7 @@ const banner_arrow = "banner-arrow";
 export default {
   mounted() {
     const arrow = document.getElementById(banner_arrow);
-    arrow && arrow.parentNode.removeChild(banner_arrow);
+    arrow && arrow.parentNode.removeChild(arrow);
     let a = document.createElement("a");
     a.id = banner_arrow;
     a.className = banner_arrow;
@@ -75,7 +75,6 @@ export default {
         this.$themeConfig.indexImg.descNextTime == undefined
           ? descNextTime
           : this.$themeConfig.indexImg.descNextTime;
-
       bubble =
         this.$themeConfig.indexImg.bubble == undefined
           ? bubble
