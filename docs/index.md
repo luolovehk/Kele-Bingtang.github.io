@@ -47,16 +47,17 @@ postList: detailed
 
 export default {
   mounted() {
+    this.fullScreen();
     // 监听滚动
     window.addEventListener('scroll', () => {
-      const banner = document.getElementsByClassName('banner')[0];
-      if(banner){
-        if(document.documentElement.scrollTop <= 0){
+      const index_class = document.getElementsByClassName('vdoing-index-class')[0];
+      if(index_class){
+        if(document.documentElement.scrollTop == 0){
+          console.log(document.documentElement.scrollTop);
           this.fullScreen();
         }else{
           this.exitScreen();
         }
-      this.fullScreen();
       }
    });
   },
@@ -65,7 +66,7 @@ export default {
       if (to.path == "/" && Object.keys(this.$route.query).length == 0) {
        // 监听滚动
         window.addEventListener('scroll', () => {
-          if(document.documentElement.scrollTop <= 0){
+          if(document.documentElement.scrollTop == 0){
             this.fullScreen();
           }else{
             this.exitScreen();
