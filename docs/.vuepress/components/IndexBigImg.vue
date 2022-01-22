@@ -26,7 +26,7 @@ export default {
       "rgba(0, 0, 0, .3)",
       "rgba(0, 0, 0, .5)",
     ];
-    let descFadeIn = false;
+    let descFade = false;
     let desc = [];
     let descFadeInTime = 200;
     let descFadeOutTime = 100;
@@ -55,10 +55,10 @@ export default {
         this.$themeConfig.indexImg.bgTimeColorArray == undefined
           ? bgTimeColorArray
           : this.$themeConfig.indexImg.bgTimeColorArray;
-      descFadeIn =
-        this.$themeConfig.indexImg.descFadeIn == undefined
-          ? descFadeIn
-          : this.$themeConfig.indexImg.descFadeIn;
+          descFade =
+        this.$themeConfig.indexImg.descFade == undefined
+          ? descFade
+          : this.$themeConfig.indexImg.descFade;
       desc =
         this.$themeConfig.indexImg.desc == undefined
           ? desc
@@ -98,7 +98,7 @@ export default {
     this.blurText(navColor);
     this.watchScroll(navColor, switchNavColor);
 
-    if (descFadeIn) {
+    if (descFade) {
       this.textFadeInAndOut(
         desc,
         descFontSize,
