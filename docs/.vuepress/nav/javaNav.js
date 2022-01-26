@@ -15,7 +15,7 @@ module.exports = {
     {
       text: 'Java进阶',
       items: [
-        { text: 'JavaWeb', link: '/javaweb/' },
+        { text: 'JavaWeb', link: '/javaweb/concept/' },
       ]
     },
   ]
