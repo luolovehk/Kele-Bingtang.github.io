@@ -44,7 +44,8 @@ postList: detailed
 
 
 <script>
-
+/*
+触发全屏相关的代码
 export default {
   mounted() {
     this.fullScreen();
@@ -107,6 +108,6 @@ export default {
     }
   },
 }
-
+*/
 
 </script>
