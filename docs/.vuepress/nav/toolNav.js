@@ -14,7 +14,6 @@ module.exports =  {
       items: [
         { text: 'Linux', link: '/linux/' },
         { text: 'Docker', link: '/docker/' },
-        { text: 'Jenkins', link: '/jenkins/' }
       ]
     },
   ]

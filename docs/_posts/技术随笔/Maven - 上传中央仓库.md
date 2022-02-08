@@ -4,7 +4,7 @@ date: 2022-02-07 21:28:59
 permalink: /maven/upload/
 titleTag: 原创
 categories: 
-  - Maevn
+  - Maven
 tags: 
   - null
 sidebar: auto
@@ -48,7 +48,7 @@ sidebar: auto
 
     > 说明，这个网址是官网提供最新的，网上一些旧的教程提供的是另一个网址，那个网址无法登录和上传。
 
-- **仓库镜像**: <http://search.maven.org/>
+- **仓库镜像**: <https://mvnrepository.com/>
 
     同步到 Maven 中央仓库后，等待 1-2 小时，我们就可以在这里面查看我们的 jar 包。
 
@@ -495,7 +495,7 @@ mvn clean deploy -P sonatype-oss-release -Darguments="gpg.passphrase=密钥密�
 
 然后点击上方的 `Close`，并点击弹出的 `Confrim`，该按钮将会对上传的 jar 包进行检查校验
 
-- 如果符合 Maven 的标准，则 `Release` 按钮变亮，点击 `Release` 并点击 `Comfirm` 后，等待 1-2 小时，就可以前往 <http://search.maven.org/> 搜索自己的 jar 包。
+- 如果符合 Maven 的标准，则 `Release` 按钮变亮，点击 `Release` 并点击 `Comfirm` 后，等待 1-2 小时，就可以前往 <https://mvnrepository.com/> 搜索自己的 jar 包。
 
 - 如果不符合 Maven 的标准，则在下方点击 `Activity` 选项卡，查看错误信息，并回到项目代码进行修改
 
