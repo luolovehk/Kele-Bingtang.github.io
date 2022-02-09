@@ -13,9 +13,15 @@ module.exports = {
       ]
     },
     {
-      text: 'Java进阶',
+      text: 'Java容器',
       items: [
         { text: 'JavaWeb', link: '/javaweb/concept/' },
+      ]
+    },
+    {
+      text: 'Java版本新特性',
+      items: [
+        { text: 'Java新特性', link: '/java/new-features/' },
       ]
     },
   ]
