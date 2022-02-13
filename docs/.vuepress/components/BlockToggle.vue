@@ -89,6 +89,7 @@ export default {
 .line-numbers-mode {
   overflow: hidden;
   transition: height 0.3s;
+  margin-top: 0.85rem;
 }
 .expand {
   width: 16px;
