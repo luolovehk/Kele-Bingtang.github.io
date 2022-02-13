@@ -4,7 +4,7 @@ module.exports = [
   [
     {
       name: 'custom-plugins',
-      globalUIComponents: ["LastReadingPopup"], // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
+      globalUIComponents: ["LastReadingPopup", "BlockToggle", "GlobalTip", "Aplayer"] // 2.x 版本 globalUIComponents 改名为 clientAppRootComponentFiles
     }
   ],
   // 本地插件

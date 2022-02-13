@@ -1,5 +1,4 @@
 import LastReadingPopup from './components/LastReadingPopup.vue'
-import Login from './components/Login.vue'
 let busuanzi;
 
 export default ({
@@ -95,7 +94,7 @@ export default ({
   Vue.mixin({
     // 有多少个 Vue 组件（md 文档），就执行多少次 mounted()，所以利用 if 判断只允许执行一次
     mounted() {
-      if (!isMounted && this.$route.path !== '/vdoing/login/') {   // /vdoing/login/ 是我使用的私密文章的 permalink，如果你不使用，就去掉 && 的后面
+      if (!isMounted) { 
         window.addEventListener('unload', this.saveLastReading);  // 卸载窗口前，将数据存储，方便下次可以直接跳转位置
         isMounted = true;
       }
