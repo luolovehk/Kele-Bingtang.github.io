@@ -54,7 +54,6 @@ export default {
       const index_class = document.getElementsByClassName('vdoing-index-class')[0];
       if(index_class){
         if(document.documentElement.scrollTop == 0){
-          console.log(document.documentElement.scrollTop);
           this.fullScreen();
         }else{
           this.exitScreen();

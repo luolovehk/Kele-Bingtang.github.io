@@ -9,7 +9,6 @@ export default {
   },
   watch: {
     $route(to, from) {
-      console.log("11");
       setTimeout(() => {
         this.addExpand(40);
       }, 1000);
