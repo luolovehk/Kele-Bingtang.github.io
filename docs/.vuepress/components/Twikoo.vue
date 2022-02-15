@@ -8,13 +8,13 @@ export default {
       setTimeout(() => {
         this.twikooInit();
       }, 1000);
-    }else{
-      console.log("aa");
     }
   },
   watch: {
     $route(to, from) {
-      if (this.$route.path != "/" && this.$route.hash == "") {
+      if (from.path == "/") {
+        this.twikooInit();
+      } else if (this.$route.path != "/" && this.$route.hash == "") {
         setTimeout(() => {
           this.updateComment();
         }, 1000);
