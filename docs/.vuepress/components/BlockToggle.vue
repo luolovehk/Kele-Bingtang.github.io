@@ -9,9 +9,11 @@ export default {
   },
   watch: {
     $route(to, from) {
-      setTimeout(() => {
-        this.addExpand(40);
-      }, 1000);
+      if (this.$route.hash == "") {
+        setTimeout(() => {
+          this.addExpand(40);
+        }, 1000);
+      }
     },
   },
   methods: {

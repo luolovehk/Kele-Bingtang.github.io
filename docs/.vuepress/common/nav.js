@@ -24,5 +24,8 @@ module.exports = [
   toolNav,  // 工具导航
   frontEnd,  // 前端导航
   moreNav,   // 更多导航
-  indexNav   //索引导航
+  indexNav,   //索引导航
+  {
+    text: '留言区', link: '/message-area/'
+  },
 ]
