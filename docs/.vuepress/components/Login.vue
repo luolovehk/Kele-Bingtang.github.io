@@ -98,7 +98,7 @@ export default {
  * dieTime：弹窗消失时间（毫秒），默认 3000 毫秒
  */
 function addTip(content, type, startHeight = 50, dieTime = 3000) {
-  var tip = document.querySelectorAll(".tip");
+  var tip = document.querySelectorAll(".private-tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
   var top = tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-top");
@@ -108,7 +108,7 @@ function addTip(content, type, startHeight = 50, dieTime = 3000) {
     (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
 
   let div = document.createElement("div");
-  div.className = `tip tip-${type} ${time}`;
+  div.className = `private-tip tip-${type} ${time}`;
   div.style.top = parseInt(top) + "px";
   div.setAttribute("data-top", lastTop);
   if (type == "info" || type == 1) {
@@ -205,7 +205,7 @@ div.v-dialog-overlay {
   opacity: 1 !important;
 }
 
-.tip {
+.private-tip {
   position: fixed;
   display: flex;
   top: -10px;
@@ -222,7 +222,7 @@ div.v-dialog-overlay {
   line-height: 17px;
 }
 
-.tip p {
+.private-tip p {
   line-height: 17px;
   margin: 0;
   font-size: 14px;

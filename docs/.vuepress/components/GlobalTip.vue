@@ -79,7 +79,7 @@ export default {
  * dieTime：弹窗消失时间（毫秒），默认 3000 毫秒
  */
 function addTip(content, type, startHeight = 50, dieTime = 3000) {
-  var tip = document.querySelectorAll(".tip");
+  var tip = document.querySelectorAll(".global-tip");
   var time = new Date().getTime();
   // 获取最后消息提示元素的高度
   var top = tip.length == 0 ? 0 : tip[tip.length - 1].getAttribute("data-top");
@@ -89,7 +89,7 @@ function addTip(content, type, startHeight = 50, dieTime = 3000) {
     (tip.length != 0 ? tip[tip.length - 1].offsetHeight + 17 : startHeight);
 
   let div = document.createElement("div");
-  div.className = `tip tip-${type} ${time} gloablTip`;
+  div.className = `global-tip tip-${type} ${time} gloablTip`;
   div.style.top = parseInt(top) + "px";
   div.setAttribute("data-top", lastTop);
   if (type == "info" || type == 1) {
@@ -145,7 +145,7 @@ function nextAllTipElement(elem) {
 
 <style>
 /* 提示框元素 */
-.tip {
+.global-tip {
   position: fixed;
   display: flex;
   top: -10px;
@@ -162,7 +162,7 @@ function nextAllTipElement(elem) {
   line-height: 17px;
 }
 
-.tip p {
+.global-tip p {
   line-height: 17px;
   margin: 0;
   font-size: 14px;

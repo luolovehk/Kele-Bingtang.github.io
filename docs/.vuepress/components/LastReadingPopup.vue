@@ -39,6 +39,7 @@ export default {
         "/zh/": {
           message: "继续上次阅读",
           sureButtonText: "前往",
+          cancelButtonText: "取消",
         },
       };
       const lang = this.$lang.split("-")[0];
@@ -66,9 +67,13 @@ export default {
   // 如果不想使用该文件的效果，注释掉即可 mouted 函数的所有内容即可
   mounted() {
     if (!!window.ActiveXObject || "ActiveXObject" in window) {
-      window.addEventListener("load", this.init()); // for IE
+      setTimeout(() => {
+        window.addEventListener("load", this.init()); // for IE
+      }, 1000);
     } else {
-      window.addEventListener("load", this.init);
+      setTimeout(() => {
+        window.addEventListener("load", this.init);
+      }, 1000);
     }
   },
 
@@ -79,7 +84,7 @@ export default {
       if (this.lastReading) {
         if (this.$route.path === this.lastReading.path) {
           this.goto();
-        } else{
+        } else {
           this.show = true;
           10000 && setTimeout(this.clean, 10000);
         }
@@ -100,7 +105,7 @@ export default {
       }
     },
 
-    dontgoto(){
+    dontgoto() {
       this.clean();
     },
 
