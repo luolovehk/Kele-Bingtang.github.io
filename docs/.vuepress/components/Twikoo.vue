@@ -7,7 +7,7 @@ export default {
     if (this.$route.path != "/") {
       setTimeout(() => {
         this.twikooInit();
-      }, 800);
+      }, 1000);
     }
   },
   watch: {
@@ -17,7 +17,7 @@ export default {
       } else if (this.$route.path != "/" && this.$route.hash == "") {
         setTimeout(() => {
           this.updateComment();
-        }, 800);
+        }, 1000);
       }
     },
   },

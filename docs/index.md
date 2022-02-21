@@ -44,6 +44,7 @@ postList: detailed
 
 
 <script>
+// 已经不再使用
 /*
 触发全屏相关的代码
 export default {

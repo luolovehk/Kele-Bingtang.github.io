@@ -12,7 +12,7 @@ const footerTitle = 'blog';
 // 头像图片
 const avatar = 'https://cdn.jsdelivr.net/gh/Kele-Bingtang/static/user/avatar2.png'
 // 头像下的昵称
-const name = 'Ship Liu'
+const name = 'Shp Liu'
 // 头像下的签名
 const slogan = '朝圣的使徒，正在走向编程的至高殿堂！';
 

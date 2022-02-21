@@ -87,7 +87,7 @@ module.exports = [
       hm: 'efdb43e9c4335da1fbabf3840b82c3ed',
     },
   ],
-  [
+  // [
     // 'vuepress-plugin-comment', // 评论插件
     // 选择 Gitalk 评论
     // {
@@ -125,7 +125,7 @@ module.exports = [
     //     enableQQ: true,   // 是否启用昵称框自动获取 QQ 昵称和 QQ 头像, 默认关闭
     //   }
     // }
-  ],
+  // ],
   [
     '@vuepress/last-updated', // "上次更新"时间格式
     {
