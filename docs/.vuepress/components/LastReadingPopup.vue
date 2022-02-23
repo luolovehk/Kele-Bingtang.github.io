@@ -37,7 +37,7 @@ export default {
           cancelButtonText: "取消",
         },
         "/zh/": {
-          message: "继续上次阅读",
+          message: "检测到您上一次阅读的位置，是否移至该位置？",
           sureButtonText: "前往",
           cancelButtonText: "取消",
         },

@@ -28,7 +28,7 @@ sidebar: auto
 
 ## 介绍
 
-我上传了我的 dbdtobean.jar 到 Maven 中央仓库，全名是 database to java bean。
+我上传了我的 dbdtobean.jar 到 Maven 中央仓库，全名是 database data to java bean。
 
 作用：读取数据库的表字段，生成 bean 文件，也就是实体类文件，并且可以选择的生成 MVC 类文件：Controller、Service、Mapper、Dao，其中每一个类文件可以选择生成五种方法：CRUD（增删改查）。
 
