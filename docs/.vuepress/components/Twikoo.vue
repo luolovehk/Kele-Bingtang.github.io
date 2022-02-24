@@ -12,7 +12,9 @@ export default {
   },
   watch: {
     $route(to, from) {
-      if (from.path == "/") {
+      if(to.path == "/"){
+        return;
+      }else if (from.path == "/") {
         this.twikooInit();
       } else if (this.$route.path != "/" && this.$route.hash == "") {
         setTimeout(() => {
